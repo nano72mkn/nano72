@@ -1,228 +1,182 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import LogoImage from '../components/LogoImage.astro';
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import Header from '../components/portfolio/Header.astro';
+import Footer from '../components/portfolio/Footer.astro';
+
+const skills = [
+  { name: 'iOS開発', level: 90 },
+  { name: 'Android開発', level: 85 },
+  { name: 'UI/UXデザイン', level: 80 },
+  { name: 'フロントエンド開発', level: 85 },
+];
+
+const timeline = [
+  {
+    year: '2023',
+    title: 'habit tapリリース',
+    description: '習慣化サポートアプリをリリース。多くのユーザーに愛用していただいています。'
+  },
+  {
+    year: '2022',
+    title: 'nano72として活動開始',
+    description: '個人事業主として独立。スマートフォンアプリ開発を本格的に開始。'
+  },
+  {
+    year: '2020',
+    title: 'アプリ開発を開始',
+    description: '趣味としてアプリ開発を始める。小さなツールから制作をスタート。'
+  }
+];
 ---
 
-<BaseLayout title="会社情報" description="nano72の会社情報をご紹介します。">
-  <section class="page-header">
-    <div class="container">
-      <h1>会社情報</h1>
-    </div>
-  </section>
-
-  <section class="content">
-    <div class="container">
-      <div class="company-info">
-        <div class="info-section">
-          <LogoImage size={100} className="company-logo" />
-          <h2>nano72について</h2>
-          <p>
-            nano72（ナノナツ）は、日常生活を少しだけ豊かにするスマートフォンアプリケーションの開発を行っています。<br>
-            「小さな太陽」のような温かさを持つアプリケーションを通じて、ユーザーの皆様の毎日に小さな幸せをお届けすることを目指しています。
-          </p>
+<PortfolioLayout 
+  title="About - nano72" 
+  description="nano72（ナノナツ）の自己紹介と開発理念"
+>
+  <Header />
+  
+  <main class="flex-1">
+    <!-- ページヘッダー -->
+    <section class="py-16 md:py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-text-primary mb-4 animate-fadeIn">
+          About
+        </h1>
+        <p class="text-lg text-text-secondary animate-fadeIn" style="animation-delay: 0.1s">
+          nano72について
+        </p>
+      </div>
+    </section>
+    
+    <!-- 自己紹介セクション -->
+    <section class="py-20">
+      <div class="max-w-container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- テキスト -->
+          <div class="space-y-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-text-primary">
+              はじめまして、nano72です
+            </h2>
+            <p class="text-text-secondary leading-relaxed">
+              nano72（ナノナツ）という屋号で、スマートフォンアプリの個人開発を行っています。
+            </p>
+            <p class="text-text-secondary leading-relaxed">
+              「小さな太陽」という意味を込めた名前の通り、日常生活に小さな温かさと幸せをお届けするアプリケーションを作ることを目指しています。
+            </p>
+            <p class="text-text-secondary leading-relaxed">
+              シンプルで使いやすく、それでいて心に残る。そんなアプリケーションを通じて、ユーザーの皆様の毎日が少しでも豊かになることを願っています。
+            </p>
+          </div>
+          
+          <!-- イメージ -->
+          <div class="relative">
+            <div class="aspect-square bg-gradient-to-br from-accent-light to-white rounded-2xl flex items-center justify-center">
+              <img 
+                src="/logo.png" 
+                alt="nano72ロゴ" 
+                class="w-32 h-32 opacity-50"
+              />
+            </div>
+            <!-- 装飾 -->
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/10 rounded-full -z-10"></div>
+            <div class="absolute -top-4 -left-4 w-32 h-32 bg-accent/5 rounded-full -z-10"></div>
+          </div>
         </div>
-
-        <div class="info-section">
-          <h2>会社概要</h2>
-          <dl class="info-list">
-            <div class="info-item">
-              <dt>名称</dt>
-              <dd>nano72（ナノナツ）</dd>
-            </div>
-            <div class="info-item">
-              <dt>事業形態</dt>
-              <dd>個人事業</dd>
-            </div>
-            <div class="info-item">
-              <dt>事業内容</dt>
-              <dd>
-                <ul>
-                  <li>スマートフォン向けアプリケーションの企画・開発・運営</li>
-                  <li>Webサービスの開発</li>
-                </ul>
-              </dd>
-            </div>
-            <div class="info-item">
-              <dt>ドメイン</dt>
-              <dd>nano72.com</dd>
-            </div>
-          </dl>
+      </div>
+    </section>
+    
+    <!-- 開発理念セクション -->
+    <section class="py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-12 text-center">
+          開発理念
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div class="text-center">
+            <div class="text-4xl mb-4">🎯</div>
+            <h3 class="text-xl font-semibold text-text-primary mb-3">シンプル</h3>
+            <p class="text-sm text-text-secondary">
+              本当に必要な機能だけを、分かりやすく提供します
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-4">❤️</div>
+            <h3 class="text-xl font-semibold text-text-primary mb-3">温かみ</h3>
+            <p class="text-sm text-text-secondary">
+              技術だけでなく、使う人の心に寄り添うアプリを作ります
+            </p>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl mb-4">✨</div>
+            <h3 class="text-xl font-semibold text-text-primary mb-3">継続的改善</h3>
+            <p class="text-sm text-text-secondary">
+              ユーザーの声を大切に、より良いアプリへと進化させます
+            </p>
+          </div>
         </div>
-
-        <div class="info-section">
-          <h2>開発理念</h2>
-          <div class="philosophy">
-            <div class="philosophy-item">
-              <h3>シンプルであること</h3>
-              <p>複雑な機能よりも、本当に必要な機能を分かりやすく提供します。</p>
+      </div>
+    </section>
+    
+    <!-- スキルセクション -->
+    <section class="py-20">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-12 text-center">
+          スキル
+        </h2>
+        
+        <div class="max-w-2xl mx-auto space-y-6">
+          {skills.map(skill => (
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-text-primary font-medium">{skill.name}</span>
+                <span class="text-sm text-text-secondary">{skill.level}%</span>
+              </div>
+              <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div 
+                  class="h-full bg-accent rounded-full transition-all duration-1000 ease-out"
+                  style={`width: ${skill.level}%`}
+                ></div>
+              </div>
             </div>
-            <div class="philosophy-item">
-              <h3>温かみがあること</h3>
-              <p>技術的な正しさだけでなく、使う人の心に寄り添うアプリを作ります。</p>
-            </div>
-            <div class="philosophy-item">
-              <h3>継続的に改善すること</h3>
-              <p>ユーザーの声を大切にし、より良いアプリへと進化させ続けます。</p>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- タイムラインセクション -->
+    <section class="py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-12 text-center">
+          あゆみ
+        </h2>
+        
+        <div class="max-w-2xl mx-auto">
+          <div class="relative">
+            <!-- 縦線 -->
+            <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-border"></div>
+            
+            <!-- タイムライン項目 -->
+            <div class="space-y-8">
+              {timeline.map((item, index) => (
+                <div class="relative flex items-start">
+                  <!-- ドット -->
+                  <div class="absolute left-8 w-4 h-4 bg-accent rounded-full -translate-x-1/2 mt-1.5"></div>
+                  
+                  <!-- コンテンツ -->
+                  <div class="ml-16">
+                    <div class="text-sm text-accent font-medium mb-1">{item.year}</div>
+                    <h3 class="text-lg font-semibold text-text-primary mb-2">{item.title}</h3>
+                    <p class="text-text-secondary text-sm">{item.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .page-header {
-    background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
-    padding: calc(var(--spacing-unit) * 8) 0 calc(var(--spacing-unit) * 6);
-    text-align: center;
-  }
-
-  .page-header h1 {
-    color: var(--color-primary);
-    font-size: 2.5rem;
-    margin: 0;
-  }
-
-  .content {
-    padding: calc(var(--spacing-unit) * 8) 0;
-  }
-
-  .company-info {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .info-section {
-    margin-bottom: calc(var(--spacing-unit) * 8);
-  }
-
-  .info-section:last-child {
-    margin-bottom: 0;
-  }
-
-  .company-logo {
-    margin: 0 auto calc(var(--spacing-unit) * 4);
-  }
-
-  .info-section h2 {
-    text-align: center;
-    color: var(--color-text);
-    margin-bottom: calc(var(--spacing-unit) * 4);
-  }
-
-  .info-section > p {
-    text-align: center;
-    line-height: 1.8;
-    color: var(--color-text);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .info-list {
-    background: var(--color-gray-light);
-    border-radius: 12px;
-    padding: calc(var(--spacing-unit) * 4);
-  }
-
-  .info-item {
-    display: flex;
-    padding: calc(var(--spacing-unit) * 2) 0;
-    border-bottom: 1px solid var(--color-gray);
-  }
-
-  .info-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .info-item:first-child {
-    padding-top: 0;
-  }
-
-  .info-item dt {
-    font-weight: 700;
-    color: var(--color-text);
-    min-width: 120px;
-    flex-shrink: 0;
-  }
-
-  .info-item dd {
-    color: var(--color-text);
-    margin: 0;
-    flex: 1;
-  }
-
-  .info-item ul {
-    list-style: none;
-    margin: 0;
-  }
-
-  .info-item ul li {
-    position: relative;
-    padding-left: calc(var(--spacing-unit) * 2);
-    margin-bottom: calc(var(--spacing-unit) * 0.5);
-  }
-
-  .info-item ul li:last-child {
-    margin-bottom: 0;
-  }
-
-  .info-item ul li::before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: var(--color-primary);
-  }
-
-  .philosophy {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: calc(var(--spacing-unit) * 4);
-  }
-
-  .philosophy-item {
-    text-align: center;
-    padding: calc(var(--spacing-unit) * 3);
-    background: var(--color-gray-light);
-    border-radius: 12px;
-  }
-
-  .philosophy-item h3 {
-    color: var(--color-primary);
-    font-size: 1.25rem;
-    margin-bottom: calc(var(--spacing-unit) * 2);
-  }
-
-  .philosophy-item p {
-    color: var(--color-text);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  @media (max-width: 768px) {
-    .page-header {
-      padding: calc(var(--spacing-unit) * 6) 0 calc(var(--spacing-unit) * 4);
-    }
-
-    .page-header h1 {
-      font-size: 2rem;
-    }
-
-    .content {
-      padding: calc(var(--spacing-unit) * 6) 0;
-    }
-
-    .info-item {
-      flex-direction: column;
-    }
-
-    .info-item dt {
-      margin-bottom: calc(var(--spacing-unit) * 1);
-    }
-
-    .philosophy {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+    </section>
+  </main>
+  
+  <Footer />
+</PortfolioLayout>

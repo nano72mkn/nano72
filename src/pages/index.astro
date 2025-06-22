@@ -1,214 +1,143 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import LogoImage from '../components/LogoImage.astro';
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import Header from '../components/portfolio/Header.astro';
+import Footer from '../components/portfolio/Footer.astro';
+import AppCard from '../components/portfolio/AppCard.astro';
 
-const apps = [
+const featuredApps = [
   {
     name: 'habit tap',
-    description: '習慣化をサポートするシンプルなアプリ',
-    status: 'リリース済み',
-    icon: '✓'
+    description: '習慣化をサポートするシンプルなアプリ。毎日の小さな積み重ねを、タップひとつで記録。',
+    icon: '✓',
+    status: 'released' as const,
+    tags: ['iOS', 'Android'],
+    link: '/apps#habit-tap'
   },
   {
     name: 'Evememo',
-    description: 'イベントの記録と思い出を管理',
-    status: '開発中',
-    icon: '📝'
+    description: 'イベントの記録と思い出を管理。大切な瞬間を、写真とメモで美しく保存。',
+    icon: '📝',
+    status: 'development' as const,
+    tags: ['iOS', 'Android'],
+    link: '/apps#evememo'
+  }
+];
+
+const news = [
+  {
+    date: '2024.03.01',
+    title: 'Evememoの開発を開始しました',
+    link: '#'
+  },
+  {
+    date: '2023.12.15',
+    title: 'habit tapがApp Storeでフィーチャーされました',
+    link: '#'
+  },
+  {
+    date: '2023.10.01',
+    title: 'nano72.comをリニューアルしました',
+    link: '#'
   }
 ];
 ---
 
-<BaseLayout title="ホーム">
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <LogoImage size={80} className="hero-logo" />
-        <h1>nano72</h1>
-        <p class="tagline">小さな太陽のような、温かいアプリを。</p>
+<PortfolioLayout title="nano72 - 小さな太陽のような、温かいアプリを。">
+  <Header />
+  
+  <main class="flex-1">
+    <!-- ヒーローセクション -->
+    <section class="py-20 md:py-30 animate-fadeIn">
+      <div class="max-w-container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
+          小さな太陽のような、<br class="md:hidden" />
+          温かいアプリを。
+        </h1>
+        <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+          nano72（ナノナツ）は、日常生活を少しだけ豊かにする<br class="hidden md:inline" />
+          スマートフォンアプリを個人で開発しています。
+        </p>
       </div>
-    </div>
-  </section>
-
-  <section class="about">
-    <div class="container">
-      <h2>私たちについて</h2>
-      <p>
-        nano72は、スマートフォン向けアプリケーションの企画・開発・運営を行う個人事業です。<br>
-        日常生活を少しだけ豊かにする、シンプルで使いやすいアプリケーションの開発を心がけています。
-      </p>
-    </div>
-  </section>
-
-  <section class="apps">
-    <div class="container">
-      <h2>開発アプリ</h2>
-      <div class="app-grid">
-        {apps.map(app => (
-          <div class="app-card">
-            <div class="app-icon">{app.icon}</div>
-            <h3>{app.name}</h3>
-            <p>{app.description}</p>
-            <span class="app-status">{app.status}</span>
-          </div>
-        ))}
+    </section>
+    
+    <!-- アプリ紹介セクション -->
+    <section class="py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-12 text-center">
+          開発アプリ
+        </h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {featuredApps.map(app => (
+            <AppCard {...app} />
+          ))}
+          
+          <!-- もっと見るカード -->
+          <article class="bg-white/50 rounded-xl p-6 border-2 border-dashed border-gray-300 flex items-center justify-center">
+            <a 
+              href="/apps" 
+              class="text-center group"
+            >
+              <div class="text-4xl mb-3 opacity-50 group-hover:opacity-70 transition-opacity">
+                →
+              </div>
+              <p class="text-text-secondary group-hover:text-accent transition-colors duration-300">
+                すべてのアプリを見る
+              </p>
+            </a>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section class="contact">
-    <div class="container">
-      <h2>お問い合わせ</h2>
-      <p>
-        アプリに関するお問い合わせ、ご意見・ご要望は<br>
-        お気軽にご連絡ください。
-      </p>
-      <a href="/contact" class="cta-button">お問い合わせページへ</a>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .hero {
-    padding: calc(var(--spacing-unit) * 10) 0;
-    text-align: center;
-    background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
-  }
-
-  .hero-content {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .hero-logo {
-    margin: 0 auto calc(var(--spacing-unit) * 3);
-  }
-
-  .hero h1 {
-    font-size: 3rem;
-    color: var(--color-primary);
-    margin-bottom: calc(var(--spacing-unit) * 2);
-  }
-
-  .tagline {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    margin: 0;
-  }
-
-  section {
-    padding: calc(var(--spacing-unit) * 8) 0;
-  }
-
-  section h2 {
-    text-align: center;
-    color: var(--color-text);
-    margin-bottom: calc(var(--spacing-unit) * 4);
-  }
-
-  .about {
-    background-color: var(--color-gray-light);
-  }
-
-  .about p {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 1.8;
-    color: var(--color-text);
-  }
-
-  .app-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: calc(var(--spacing-unit) * 4);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .app-card {
-    background: white;
-    border-radius: 12px;
-    padding: calc(var(--spacing-unit) * 4);
-    text-align: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .app-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-  }
-
-  .app-icon {
-    font-size: 3rem;
-    margin-bottom: calc(var(--spacing-unit) * 2);
-  }
-
-  .app-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: calc(var(--spacing-unit) * 1);
-  }
-
-  .app-card p {
-    color: var(--color-text-light);
-    margin-bottom: calc(var(--spacing-unit) * 2);
-  }
-
-  .app-status {
-    display: inline-block;
-    padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 2);
-    background-color: var(--color-gray-light);
-    border-radius: 20px;
-    font-size: 0.875rem;
-    color: var(--color-text);
-  }
-
-  .contact {
-    background-color: var(--color-gray-light);
-    text-align: center;
-  }
-
-  .contact p {
-    margin-bottom: calc(var(--spacing-unit) * 4);
-    color: var(--color-text);
-  }
-
-  .cta-button {
-    display: inline-block;
-    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
-    background-color: var(--color-primary);
-    color: white;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .cta-button:hover {
-    background-color: var(--color-primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
-
-  @media (max-width: 768px) {
-    .hero {
-      padding: calc(var(--spacing-unit) * 6) 0;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-    }
-
-    .tagline {
-      font-size: 1.1rem;
-    }
-
-    section {
-      padding: calc(var(--spacing-unit) * 6) 0;
-    }
-
-    .app-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+    </section>
+    
+    <!-- お知らせセクション -->
+    <section class="py-20">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-12 text-center">
+          お知らせ
+        </h2>
+        
+        <div class="max-w-2xl mx-auto">
+          <ul class="space-y-4">
+            {news.map(item => (
+              <li class="border-b border-border pb-4 last:border-0">
+                <a href={item.link} class="group flex items-start justify-between hover:text-accent transition-colors duration-300">
+                  <div>
+                    <time class="text-sm text-text-secondary">{item.date}</time>
+                    <h3 class="font-medium mt-1">{item.title}</h3>
+                  </div>
+                  <svg class="w-5 h-5 text-text-secondary group-hover:text-accent mt-1 transition-all duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTAセクション -->
+    <section class="py-20 bg-accent-light">
+      <div class="max-w-container mx-auto px-6 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-6">
+          nano72について
+        </h2>
+        <p class="text-text-secondary mb-8 max-w-2xl mx-auto">
+          個人開発者としての想いや、アプリ開発にかける思いをまとめています。
+        </p>
+        <a 
+          href="/about" 
+          class="inline-flex items-center text-accent hover:text-accent-hover font-medium transition-colors duration-300 group"
+        >
+          <span>詳しく見る</span>
+          <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</PortfolioLayout>

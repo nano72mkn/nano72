@@ -1,0 +1,142 @@
+---
+---
+
+<section id="contact" class="py-20 md:py-30 bg-white">
+  <div class="max-w-container mx-auto px-6">
+    <div class="max-w-3xl mx-auto">
+      <!-- セクションヘッダー -->
+      <div class="text-center mb-12">
+        <h2 class="text-h2 md:text-4xl font-bold text-text-primary mb-4">
+          お問い合わせ
+        </h2>
+        <p class="text-lg text-text-secondary">
+          まずはお気軽にご相談ください。24時間以内にご返信いたします。
+        </p>
+      </div>
+      
+      <!-- コンタクトフォーム -->
+      <form class="bg-sub-base rounded-2xl p-8 md:p-12">
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <!-- お名前 -->
+          <div>
+            <label for="name" class="block text-sm font-medium text-text-primary mb-2">
+              お名前 <span class="text-accent">*</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-3 bg-white border border-border rounded-lg focus:border-accent focus:outline-none transition-colors duration-base"
+              placeholder="山田 太郎"
+            />
+          </div>
+          
+          <!-- 会社名 -->
+          <div>
+            <label for="company" class="block text-sm font-medium text-text-primary mb-2">
+              会社名
+            </label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              class="w-full px-4 py-3 bg-white border border-border rounded-lg focus:border-accent focus:outline-none transition-colors duration-base"
+              placeholder="株式会社サンプル"
+            />
+          </div>
+        </div>
+        
+        <!-- メールアドレス -->
+        <div class="mb-6">
+          <label for="email" class="block text-sm font-medium text-text-primary mb-2">
+            メールアドレス <span class="text-accent">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-3 bg-white border border-border rounded-lg focus:border-accent focus:outline-none transition-colors duration-base"
+            placeholder="sample@example.com"
+          />
+        </div>
+        
+        <!-- お問い合わせ種別 -->
+        <div class="mb-6">
+          <label for="type" class="block text-sm font-medium text-text-primary mb-2">
+            お問い合わせ種別 <span class="text-accent">*</span>
+          </label>
+          <select
+            id="type"
+            name="type"
+            required
+            class="w-full px-4 py-3 bg-white border border-border rounded-lg focus:border-accent focus:outline-none transition-colors duration-base"
+          >
+            <option value="">選択してください</option>
+            <option value="consulting">コンサルティングについて</option>
+            <option value="development">システム開発について</option>
+            <option value="marketing">マーケティング支援について</option>
+            <option value="other">その他</option>
+          </select>
+        </div>
+        
+        <!-- お問い合わせ内容 -->
+        <div class="mb-8">
+          <label for="message" class="block text-sm font-medium text-text-primary mb-2">
+            お問い合わせ内容 <span class="text-accent">*</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            required
+            class="w-full px-4 py-3 bg-white border border-border rounded-lg focus:border-accent focus:outline-none transition-colors duration-base resize-none"
+            placeholder="お問い合わせ内容をご記入ください"
+          ></textarea>
+        </div>
+        
+        <!-- プライバシーポリシー同意 -->
+        <div class="mb-8">
+          <label class="flex items-start cursor-pointer">
+            <input
+              type="checkbox"
+              required
+              class="mt-1 mr-3 w-4 h-4 text-accent border-border rounded focus:ring-accent"
+            />
+            <span class="text-sm text-text-secondary">
+              <a href="#" class="text-accent hover:text-accent-hover underline">プライバシーポリシー</a>に同意の上、送信します。
+            </span>
+          </label>
+        </div>
+        
+        <!-- 送信ボタン -->
+        <button
+          type="submit"
+          class="w-full md:w-auto px-8 py-4 bg-accent hover:bg-accent-hover text-white font-medium rounded-lg transition-all duration-base hover:-translate-y-0.5 hover:shadow-button"
+        >
+          送信する
+        </button>
+      </form>
+      
+      <!-- 補足情報 -->
+      <div class="mt-12 grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="text-3xl mb-3">📧</div>
+          <h3 class="font-medium text-text-primary mb-1">メール</h3>
+          <p class="text-sm text-text-secondary">contact@example.com</p>
+        </div>
+        <div>
+          <div class="text-3xl mb-3">📱</div>
+          <h3 class="font-medium text-text-primary mb-1">電話</h3>
+          <p class="text-sm text-text-secondary">090-0000-0000</p>
+        </div>
+        <div>
+          <div class="text-3xl mb-3">⏰</div>
+          <h3 class="font-medium text-text-primary mb-1">営業時間</h3>
+          <p class="text-sm text-text-secondary">平日 9:00-18:00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

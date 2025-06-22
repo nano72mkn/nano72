@@ -1,0 +1,76 @@
+---
+const services = [
+  {
+    icon: '🎯',
+    title: 'コンサルティング',
+    description: 'ビジネスの課題を分析し、最適な解決策をご提案。豊富な経験に基づいた実践的なアドバイスを提供します。',
+    features: ['課題分析', '戦略立案', '実行支援']
+  },
+  {
+    icon: '💻',
+    title: 'システム開発',
+    description: '業務効率化を実現するカスタムシステムを開発。お客様のニーズに合わせた最適なソリューションを構築します。',
+    features: ['要件定義', '設計・開発', '保守運用']
+  },
+  {
+    icon: '📈',
+    title: 'マーケティング支援',
+    description: 'データに基づいた効果的なマーケティング戦略を策定。売上向上と顧客獲得をサポートします。',
+    features: ['市場分析', '戦略策定', '実行支援']
+  }
+];
+---
+
+<section id="services" class="py-20 md:py-30 bg-white">
+  <div class="max-w-container mx-auto px-6">
+    <!-- セクションヘッダー -->
+    <div class="text-center mb-16">
+      <h2 class="text-h2 md:text-4xl font-bold text-text-primary mb-4">
+        提供サービス
+      </h2>
+      <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        お客様のビジネスを成功に導くための、幅広いサービスをご提供しています
+      </p>
+    </div>
+    
+    <!-- サービスカード -->
+    <div class="grid md:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <div class="group bg-white border border-border rounded-xl p-8 hover:shadow-card-hover hover:-translate-y-1 transition-all duration-base">
+          <!-- アイコン -->
+          <div class="text-5xl mb-6">{service.icon}</div>
+          
+          <!-- タイトル -->
+          <h3 class="text-h3 font-bold text-text-primary mb-4">
+            {service.title}
+          </h3>
+          
+          <!-- 説明 -->
+          <p class="text-text-secondary mb-6 leading-relaxed">
+            {service.description}
+          </p>
+          
+          <!-- 特徴リスト -->
+          <ul class="space-y-2">
+            {service.features.map((feature) => (
+              <li class="flex items-center text-sm text-text-secondary">
+                <svg class="w-4 h-4 text-accent mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          
+          <!-- 詳細リンク -->
+          <a href="#contact" class="inline-flex items-center mt-6 text-accent hover:text-accent-hover font-medium text-sm group-hover:translate-x-1 transition-transform duration-base">
+            詳しく見る
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,84 @@
+---
+export interface Props {
+  name: string;
+  description: string;
+  icon?: string;
+  status: 'released' | 'development';
+  tags?: string[];
+  link?: string;
+  image?: string;
+}
+
+const { name, description, icon = '📱', status, tags = [], link = '#', image } = Astro.props;
+---
+
+<article class="group bg-white rounded-xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+  <a href={link} class="block">
+    <!-- アイコン/画像 -->
+    <div class="mb-4">
+      {image ? (
+        <img 
+          src={image} 
+          alt={`${name}のアイコン`}
+          class="w-16 h-16 rounded-xl object-cover"
+        />
+      ) : (
+        <div class="w-16 h-16 bg-accent-light rounded-xl flex items-center justify-center text-2xl">
+          {icon}
+        </div>
+      )}
+    </div>
+    
+    <!-- コンテンツ -->
+    <div class="space-y-3">
+      <!-- タイトルとステータス -->
+      <div class="flex items-start justify-between">
+        <h3 class="text-xl font-semibold text-text-primary group-hover:text-accent transition-colors duration-300">
+          {name}
+        </h3>
+        <span class={`
+          text-xs px-2 py-1 rounded-full font-medium
+          ${status === 'released' 
+            ? 'bg-green-100 text-green-700' 
+            : 'bg-amber-100 text-amber-700'
+          }
+        `}>
+          {status === 'released' ? 'リリース済み' : '開発中'}
+        </span>
+      </div>
+      
+      <!-- 説明 -->
+      <p class="text-sm text-text-secondary line-clamp-2">
+        {description}
+      </p>
+      
+      <!-- タグ -->
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {tags.map(tag => (
+            <span class="text-xs px-2 py-1 bg-accent-light text-accent rounded-md">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+      
+      <!-- リンク -->
+      <div class="flex items-center text-accent text-sm font-medium group-hover:gap-2 transition-all duration-300">
+        <span>詳しく見る</span>
+        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+</article>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

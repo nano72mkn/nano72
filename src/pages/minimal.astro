@@ -1,0 +1,136 @@
+---
+import LayoutMinimal from '../layouts/LayoutMinimal.astro';
+import HeaderMinimal from '../components/HeaderMinimal.astro';
+import HeroMinimal from '../components/HeroMinimal.astro';
+import ServicesMinimal from '../components/ServicesMinimal.astro';
+import PortfolioMinimal from '../components/PortfolioMinimal.astro';
+import ContactMinimal from '../components/ContactMinimal.astro';
+import FooterMinimal from '../components/FooterMinimal.astro';
+---
+
+<LayoutMinimal title="信頼と実績の個人事業主サービス | Your Business">
+  <HeaderMinimal />
+  
+  <main>
+    <HeroMinimal />
+    <ServicesMinimal />
+    <PortfolioMinimal />
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-30 bg-white">
+      <div class="max-w-container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- テキストコンテンツ -->
+          <div>
+            <h2 class="text-h2 md:text-4xl font-bold text-text-primary mb-6">
+              私について
+            </h2>
+            <p class="text-lg text-text-secondary mb-6 leading-relaxed">
+              はじめまして。個人事業主として10年以上、様々な企業様のビジネス課題解決をサポートしてきました。
+            </p>
+            <p class="text-text-secondary mb-8 leading-relaxed">
+              大手企業での経験を活かし、中小企業やスタートアップの皆様に、大企業品質のサービスを適正価格でご提供することを使命としています。お客様一社一社と真摯に向き合い、共に成長していくパートナーでありたいと考えています。
+            </p>
+            
+            <!-- スキルリスト -->
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <div class="w-24 text-sm text-text-secondary">経営戦略</div>
+                <div class="flex-1 bg-sub-base rounded-full h-2">
+                  <div class="bg-accent h-2 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-24 text-sm text-text-secondary">システム開発</div>
+                <div class="flex-1 bg-sub-base rounded-full h-2">
+                  <div class="bg-accent h-2 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div class="w-24 text-sm text-text-secondary">マーケティング</div>
+                <div class="flex-1 bg-sub-base rounded-full h-2">
+                  <div class="bg-accent h-2 rounded-full" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 画像プレースホルダー -->
+          <div class="relative">
+            <div class="aspect-square bg-gradient-to-br from-accent/10 to-accent/20 rounded-2xl flex items-center justify-center">
+              <span class="text-8xl opacity-50">👤</span>
+            </div>
+            <!-- 装飾要素 -->
+            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-accent/10 rounded-full -z-10"></div>
+            <div class="absolute -top-6 -left-6 w-32 h-32 bg-accent/5 rounded-full -z-10"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 md:py-30 bg-sub-base">
+      <div class="max-w-container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-h2 md:text-4xl font-bold text-text-primary mb-4">
+            お客様の声
+          </h2>
+          <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+            実際にサービスをご利用いただいたお客様からの声をご紹介します
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              name: "田中 様",
+              company: "株式会社A",
+              text: "的確なアドバイスと迅速な対応で、プロジェクトを成功に導いていただきました。",
+              rating: 5
+            },
+            {
+              name: "佐藤 様",
+              company: "B商事",
+              text: "コストパフォーマンスが素晴らしく、期待以上の成果を出していただきました。",
+              rating: 5
+            },
+            {
+              name: "鈴木 様",
+              company: "Cコーポレーション",
+              text: "細かい要望にも柔軟に対応していただき、大変満足しています。",
+              rating: 5
+            }
+          ].map((testimonial) => (
+            <div class="bg-white p-6 rounded-xl shadow-card">
+              <div class="flex mb-4">
+                {[...Array(testimonial.rating)].map(() => (
+                  <svg class="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                ))}
+              </div>
+              <p class="text-text-secondary mb-4 text-sm leading-relaxed">
+                "{testimonial.text}"
+              </p>
+              <div class="text-sm">
+                <p class="font-medium text-text-primary">{testimonial.name}</p>
+                <p class="text-text-secondary">{testimonial.company}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <ContactMinimal />
+  </main>
+  
+  <FooterMinimal />
+</LayoutMinimal>
+
+<style>
+  /* スムーズスクロール用のアンカー調整 */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+</style>

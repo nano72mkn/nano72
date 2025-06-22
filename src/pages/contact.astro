@@ -1,292 +1,282 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import Header from '../components/portfolio/Header.astro';
+import Footer from '../components/portfolio/Footer.astro';
 
 const contactMethods = [
   {
     type: 'email',
     title: 'メール',
     description: 'お問い合わせフォームまたはメールでご連絡ください',
-    action: 'contact@nano72.com',
-    icon: '✉️'
+    value: 'contact@nano72.com',
+    icon: '✉️',
+    link: 'mailto:contact@nano72.com'
   },
   {
-    type: 'social',
-    title: 'ソーシャルメディア',
-    description: '最新情報はこちらでも発信しています',
-    action: '#',
-    icon: '💬'
+    type: 'github',
+    title: 'GitHub',
+    description: 'オープンソースプロジェクトはこちら',
+    value: '@nano72',
+    icon: '🐙',
+    link: 'https://github.com/nano72'
+  },
+  {
+    type: 'twitter',
+    title: 'Twitter',
+    description: '最新情報やアップデートを発信',
+    value: '@nano72_app',
+    icon: '🐦',
+    link: 'https://twitter.com/nano72_app'
   }
 ];
 ---
 
-<BaseLayout title="お問い合わせ" description="nano72へのお問い合わせはこちらから。">
-  <section class="page-header">
-    <div class="container">
-      <h1>お問い合わせ</h1>
-      <p>ご意見・ご要望をお聞かせください</p>
-    </div>
-  </section>
-
-  <section class="contact-section">
-    <div class="container">
-      <div class="contact-content">
-        <div class="contact-intro">
-          <p>
-            アプリに関するご質問、不具合のご報告、新機能のご提案など、<br>
-            お気軽にお問い合わせください。皆様の声を大切にし、<br>
-            より良いサービスの提供に努めてまいります。
-          </p>
-        </div>
-
-        <div class="contact-methods">
+<PortfolioLayout 
+  title="Contact - nano72" 
+  description="nano72へのお問い合わせ・ご連絡方法"
+>
+  <Header />
+  
+  <main class="flex-1">
+    <!-- ページヘッダー -->
+    <section class="py-16 md:py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-text-primary mb-4 animate-fadeIn">
+          Contact
+        </h1>
+        <p class="text-lg text-text-secondary animate-fadeIn" style="animation-delay: 0.1s">
+          お問い合わせ・ご連絡
+        </p>
+      </div>
+    </section>
+    
+    <!-- イントロセクション -->
+    <section class="py-20">
+      <div class="max-w-2xl mx-auto px-6 text-center">
+        <p class="text-text-secondary leading-relaxed">
+          アプリに関するご質問、不具合のご報告、新機能のご提案など、
+          お気軽にお問い合わせください。
+        </p>
+        <p class="text-text-secondary leading-relaxed mt-4">
+          皆様からの貴重なフィードバックを元に、
+          より良いアプリケーションを作り続けていきます。
+        </p>
+      </div>
+    </section>
+    
+    <!-- コンタクト方法 -->
+    <section class="py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-12 text-center">
+          連絡方法
+        </h2>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {contactMethods.map(method => (
-            <div class="contact-method">
-              <div class="method-icon">{method.icon}</div>
-              <h3>{method.title}</h3>
-              <p>{method.description}</p>
-              {method.type === 'email' ? (
-                <a href={`mailto:${method.action}`} class="contact-link">
-                  {method.action}
-                </a>
-              ) : (
-                <span class="contact-info">準備中</span>
-              )}
-            </div>
+            <a 
+              href={method.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-white p-6 rounded-xl text-center hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 group"
+            >
+              <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {method.icon}
+              </div>
+              <h3 class="text-lg font-semibold text-text-primary mb-2">
+                {method.title}
+              </h3>
+              <p class="text-sm text-text-secondary mb-3">
+                {method.description}
+              </p>
+              <p class="text-accent font-medium text-sm group-hover:text-accent-hover transition-colors duration-300">
+                {method.value}
+              </p>
+            </a>
           ))}
         </div>
-
-        <div class="contact-form-section">
-          <h2>お問い合わせフォーム</h2>
-          <form class="contact-form" name="contact" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="contact" />
+      </div>
+    </section>
+    
+    <!-- お問い合わせフォーム -->
+    <section class="py-20">
+      <div class="max-w-2xl mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-12 text-center">
+          お問い合わせフォーム
+        </h2>
+        
+        <form class="space-y-6" name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-text-primary mb-2">
+                お名前 <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-accent transition-colors duration-300"
+              />
+            </div>
             
-            <div class="form-group">
-              <label for="name">お名前</label>
-              <input type="text" id="name" name="name" required />
+            <div>
+              <label for="email" class="block text-sm font-medium text-text-primary mb-2">
+                メールアドレス <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-accent transition-colors duration-300"
+              />
             </div>
-
-            <div class="form-group">
-              <label for="email">メールアドレス</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-
-            <div class="form-group">
-              <label for="subject">件名</label>
-              <select id="subject" name="subject" required>
-                <option value="">選択してください</option>
-                <option value="bug">不具合のご報告</option>
-                <option value="feature">機能のご提案</option>
-                <option value="question">ご質問</option>
-                <option value="other">その他</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message">お問い合わせ内容</label>
-              <textarea id="message" name="message" rows="6" required></textarea>
-            </div>
-
-            <button type="submit" class="submit-button">送信する</button>
-          </form>
-        </div>
-
-        <div class="response-time">
-          <h3>返信について</h3>
-          <p>
-            通常、3営業日以内にご返信いたします。<br>
-            お急ぎの場合は、件名に「至急」とご記入ください。
+          </div>
+          
+          <div>
+            <label for="app" class="block text-sm font-medium text-text-primary mb-2">
+              アプリ名
+            </label>
+            <select
+              id="app"
+              name="app"
+              class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-accent transition-colors duration-300"
+            >
+              <option value="">選択してください</option>
+              <option value="habit-tap">habit tap</option>
+              <option value="evememo">Evememo</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="subject" class="block text-sm font-medium text-text-primary mb-2">
+              件名 <span class="text-red-500">*</span>
+            </label>
+            <select
+              id="subject"
+              name="subject"
+              required
+              class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-accent transition-colors duration-300"
+            >
+              <option value="">選択してください</option>
+              <option value="bug">不具合のご報告</option>
+              <option value="feature">機能のご提案</option>
+              <option value="question">ご質問</option>
+              <option value="business">ビジネスのご相談</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="message" class="block text-sm font-medium text-text-primary mb-2">
+              お問い合わせ内容 <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              class="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:border-accent transition-colors duration-300 resize-y"
+            ></textarea>
+          </div>
+          
+          <div class="text-center pt-6">
+            <button
+              type="submit"
+              class="inline-flex items-center px-8 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent-hover transition-colors duration-300 shadow-md hover:shadow-lg"
+            >
+              送信する
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+        
+        <div class="mt-12 p-6 bg-accent-light rounded-lg text-center">
+          <h3 class="font-semibold text-text-primary mb-2">返信について</h3>
+          <p class="text-sm text-text-secondary">
+            通常、3営業日以内にご返信いたします。
+            お急ぎの場合は、TwitterのDMからもご連絡いただけます。
           </p>
         </div>
       </div>
-    </div>
-  </section>
-</BaseLayout>
+    </section>
+    
+    <!-- FAQセクション -->
+    <section class="py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-12 text-center">
+          よくあるご質問
+        </h2>
+        
+        <div class="max-w-3xl mx-auto space-y-4">
+          <details class="bg-white rounded-lg p-6 group">
+            <summary class="cursor-pointer list-none flex items-center justify-between font-medium text-text-primary">
+              アプリの不具合を見つけました。どうすればいいですか？
+              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </summary>
+            <p class="mt-4 text-text-secondary text-sm">
+              不具合の詳細（発生条件、エラーメッセージなど）を上記フォームからお送りください。
+              スクリーンショットがあれば、メールに添付してお送りいただけると助かります。
+            </p>
+          </details>
+          
+          <details class="bg-white rounded-lg p-6 group">
+            <summary class="cursor-pointer list-none flex items-center justify-between font-medium text-text-primary">
+              アプリのアイデアを提案したいです
+              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </summary>
+            <p class="mt-4 text-text-secondary text-sm">
+              新しいアプリのアイデアや機能のご提案は大歓迎です！
+              フォームの「件名」で「機能のご提案」を選択してお送りください。
+            </p>
+          </details>
+          
+          <details class="bg-white rounded-lg p-6 group">
+            <summary class="cursor-pointer list-none flex items-center justify-between font-medium text-text-primary">
+              アプリ開発の依頼はできますか？
+              <svg class="w-5 h-5 text-text-secondary group-open:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </summary>
+            <p class="mt-4 text-text-secondary text-sm">
+              現在は個人開発に専念しておりますが、内容によってはご相談に応じます。
+              「ビジネスのご相談」を選択してお問い合わせください。
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</PortfolioLayout>
 
 <style>
-  .page-header {
-    background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
-    padding: calc(var(--spacing-unit) * 8) 0 calc(var(--spacing-unit) * 6);
-    text-align: center;
-  }
-
-  .page-header h1 {
-    color: var(--color-primary);
-    font-size: 2.5rem;
-    margin: 0 0 calc(var(--spacing-unit) * 2);
-  }
-
-  .page-header p {
-    color: var(--color-text-light);
-    font-size: 1.125rem;
-    margin: 0;
-  }
-
-  .contact-section {
-    padding: calc(var(--spacing-unit) * 8) 0;
-  }
-
-  .contact-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .contact-intro {
-    text-align: center;
-    margin-bottom: calc(var(--spacing-unit) * 6);
-  }
-
-  .contact-intro p {
-    color: var(--color-text);
-    line-height: 1.8;
-  }
-
-  .contact-methods {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: calc(var(--spacing-unit) * 4);
-    margin-bottom: calc(var(--spacing-unit) * 8);
-  }
-
-  .contact-method {
-    background: var(--color-gray-light);
-    border-radius: 12px;
-    padding: calc(var(--spacing-unit) * 4);
-    text-align: center;
-  }
-
-  .method-icon {
-    font-size: 3rem;
-    margin-bottom: calc(var(--spacing-unit) * 2);
-  }
-
-  .contact-method h3 {
-    font-size: 1.25rem;
-    color: var(--color-text);
-    margin-bottom: calc(var(--spacing-unit) * 1);
-  }
-
-  .contact-method p {
-    color: var(--color-text-light);
-    margin-bottom: calc(var(--spacing-unit) * 2);
-    font-size: 0.875rem;
-  }
-
-  .contact-link {
-    color: var(--color-primary);
-    font-weight: 500;
-  }
-
-  .contact-info {
-    color: var(--color-text-light);
-    font-size: 0.875rem;
-  }
-
-  .contact-form-section {
-    background: var(--color-gray-light);
-    border-radius: 12px;
-    padding: calc(var(--spacing-unit) * 5);
-    margin-bottom: calc(var(--spacing-unit) * 6);
-  }
-
-  .contact-form-section h2 {
-    text-align: center;
-    color: var(--color-text);
-    margin-bottom: calc(var(--spacing-unit) * 4);
-  }
-
-  .contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .form-group {
-    margin-bottom: calc(var(--spacing-unit) * 3);
-  }
-
-  .form-group label {
-    display: block;
-    font-weight: 500;
-    color: var(--color-text);
-    margin-bottom: calc(var(--spacing-unit) * 1);
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: calc(var(--spacing-unit) * 1.5);
-    border: 1px solid var(--color-gray);
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 1rem;
-    background: white;
-    transition: border-color 0.2s ease;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: var(--color-primary);
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-
-  .submit-button {
-    display: block;
-    width: 100%;
-    padding: calc(var(--spacing-unit) * 2);
-    background: var(--color-primary);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .submit-button:hover {
-    background: var(--color-primary-dark);
-    transform: translateY(-2px);
-  }
-
-  .response-time {
-    text-align: center;
-    padding: calc(var(--spacing-unit) * 4);
-    background: #fff8f0;
-    border-radius: 12px;
-  }
-
-  .response-time h3 {
-    color: var(--color-primary);
-    margin-bottom: calc(var(--spacing-unit) * 2);
-  }
-
-  .response-time p {
-    color: var(--color-text);
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  @media (max-width: 768px) {
-    .page-header {
-      padding: calc(var(--spacing-unit) * 6) 0 calc(var(--spacing-unit) * 4);
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
     }
-
-    .page-header h1 {
-      font-size: 2rem;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    .contact-methods {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-form-section {
-      padding: calc(var(--spacing-unit) * 3);
-    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  details summary::-webkit-details-marker {
+    display: none;
   }
 </style>
