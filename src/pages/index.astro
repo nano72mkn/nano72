@@ -55,10 +55,16 @@ const news = [
         <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-accent-light/10 blur-3xl -translate-x-1/2 translate-y-1/2"></div>
       </div>
       
-      <!-- 装飾的な円 -->
-      <div class="absolute bottom-10 left-10 w-24 h-24 md:w-32 md:h-32 rounded-full bg-accent/5 animate-float-delay-1"></div>
-      <div class="absolute top-40 left-20 w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent/10 animate-float-delay-2"></div>
-      <div class="absolute top-20 right-10 md:right-20 w-20 h-20 md:w-24 md:h-24 rounded-full bg-accent/8 animate-float"></div>
+      <!-- 装飾的な円（左右にバランスよく配置） -->
+      <!-- 左側の円 -->
+      <div class="hidden md:block absolute bottom-20 left-10 md:left-20 w-24 h-24 md:w-28 md:h-28 rounded-full bg-accent/20 animate-float-delay-1"></div>
+      <div class="hidden md:block absolute top-32 left-[15%] w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent/25 animate-float"></div>
+      <div class="hidden md:block absolute top-1/2 left-[5%] w-14 h-14 md:w-16 md:h-16 rounded-full bg-accent/15 animate-float-delay-2"></div>
+      
+      <!-- 右側の円 -->
+      <div class="hidden md:block absolute top-20 right-10 md:right-20 w-20 h-20 md:w-24 md:h-24 rounded-full bg-accent/15 animate-float-delay-2"></div>
+      <div class="hidden md:block absolute bottom-32 right-[10%] w-18 h-18 md:w-22 md:h-22 rounded-full bg-accent/20 animate-float"></div>
+      <div class="hidden md:block absolute top-[45%] right-[15%] w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent/25 animate-float-delay-1"></div>
       
       <!-- メインコンテンツ -->
       <div class="relative z-10 max-w-container mx-auto px-6 text-center">
