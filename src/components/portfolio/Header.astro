@@ -8,9 +8,9 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-base/85 backdrop-blur-md">
-  <div class="max-w-container mx-auto px-6">
-    <nav class="flex items-center justify-between h-20">
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div id="header-inner" class="max-w-container mx-auto transition-all duration-300 border-b border-border/20">
+    <nav class="flex items-center justify-between h-16 px-6">
       <!-- ロゴ -->
       <a href="/" class="flex items-center gap-3 group">
         <img 
@@ -94,7 +94,7 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <!-- スペーサー -->
-<div class="h-20"></div>
+<div class="h-16"></div>
 
 <style>
   #mobile-menu.active {
@@ -124,4 +124,34 @@ const currentPath = Astro.url.pathname;
       document.body.style.overflow = '';
     });
   });
+  
+  // スクロール時のヘッダー浮遊効果
+  const header = document.getElementById('header');
+  const headerInner = document.getElementById('header-inner');
+  let lastScrollY = 0;
+  
+  function updateHeader() {
+    const scrollY = window.scrollY;
+    
+    if (scrollY > 100) {
+      // スクロール時：浮いたスタイル
+      header?.classList.add('top-4', 'px-4', 'md:px-6');
+      header?.classList.remove('top-0');
+      headerInner?.classList.add('rounded-full', 'shadow-lg', 'border', 'border-border/50', 'bg-base/90', 'backdrop-blur-md');
+      headerInner?.classList.remove('border-b', 'border-border/20');
+    } else {
+      // 初期状態：通常のスタイル
+      header?.classList.remove('top-4', 'px-4', 'md:px-6');
+      header?.classList.add('top-0');
+      headerInner?.classList.remove('rounded-full', 'shadow-lg', 'border', 'border-border/50', 'bg-base/90', 'backdrop-blur-md');
+      headerInner?.classList.add('border-b', 'border-border/20');
+    }
+    
+    lastScrollY = scrollY;
+  }
+  
+  // スクロールイベントの監視
+  window.addEventListener('scroll', updateHeader);
+  // 初期状態の設定
+  updateHeader();
 </script>
