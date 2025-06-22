@@ -47,16 +47,60 @@ const news = [
   
   <main class="flex-1">
     <!-- ヒーローセクション -->
-    <section class="py-20 md:py-30 animate-fadeIn">
-      <div class="max-w-container mx-auto px-6 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">
-          小さな太陽のような、<br class="md:hidden" />
-          温かいアプリを。
+    <section class="relative py-20 md:py-32 overflow-hidden">
+      <!-- 背景装飾（柔らかい円） -->
+      <div class="absolute inset-0">
+        <!-- 大きな薄い円 -->
+        <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-accent-light/10 blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-accent-light/10 blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+      </div>
+      
+      <!-- 装飾的な円 -->
+      <div class="absolute bottom-10 left-10 w-24 h-24 md:w-32 md:h-32 rounded-full bg-accent/5 animate-float-delay-1"></div>
+      <div class="absolute top-40 left-20 w-16 h-16 md:w-20 md:h-20 rounded-full bg-accent/10 animate-float-delay-2"></div>
+      <div class="absolute top-20 right-10 md:right-20 w-20 h-20 md:w-24 md:h-24 rounded-full bg-accent/8 animate-float"></div>
+      
+      <!-- メインコンテンツ -->
+      <div class="relative z-10 max-w-container mx-auto px-6 text-center">
+        <!-- ロゴ -->
+        <div class="mb-8 animate-fadeIn">
+          <img 
+            src="/logo.png" 
+            alt="nano72 logo" 
+            class="w-20 h-20 md:w-24 md:h-24 mx-auto opacity-80"
+          />
+        </div>
+        
+        <!-- メインタイトル -->
+        <h1 class="text-3xl md:text-5xl font-bold text-text-primary mb-6 leading-relaxed animate-fadeIn" style="animation-delay: 0.1s">
+          小さな太陽のような
+          <span class="block mt-2 text-accent">温かいアプリを。</span>
         </h1>
-        <p class="text-lg text-text-secondary max-w-2xl mx-auto">
+        
+        <!-- サブテキスト -->
+        <p class="text-base md:text-lg text-text-secondary mb-10 max-w-2xl mx-auto leading-relaxed animate-fadeIn" style="animation-delay: 0.2s">
           nano72（ナノナツ）は、日常生活を少しだけ豊かにする<br class="hidden md:inline" />
           スマートフォンアプリを個人で開発しています。
         </p>
+        
+        <!-- CTA ボタン -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeIn" style="animation-delay: 0.3s">
+          <a 
+            href="/apps" 
+            class="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-medium rounded-full hover:bg-accent-hover transition-all duration-300 shadow-sm hover:shadow-md group"
+          >
+            <span>アプリを見る</span>
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+          <a 
+            href="/about" 
+            class="inline-flex items-center justify-center px-6 py-3 bg-white text-text-secondary font-medium rounded-full hover:bg-gray-50 transition-all duration-300 border border-gray-200 hover:border-gray-300"
+          >
+            <span>About nano72</span>
+          </a>
+        </div>
       </div>
     </section>
     
