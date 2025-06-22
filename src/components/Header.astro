@@ -1,0 +1,181 @@
+---
+import Logo from './Logo.astro';
+
+const navItems = [
+  { href: '/', label: 'ホーム' },
+  { href: '/about', label: '会社情報' },
+  { href: '/apps', label: 'アプリ' },
+  { href: '/contact', label: 'お問い合わせ' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="/" class="logo-link">
+        <Logo size={32} />
+        <span class="company-name">nano72</span>
+      </a>
+      
+      <button class="mobile-menu-toggle" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="nav-list">
+        {navItems.map(item => (
+          <li>
+            <a 
+              href={item.href} 
+              class={currentPath === item.href ? 'active' : ''}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-gray);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(var(--spacing-unit) * 2) 0;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.5);
+    color: var(--color-text);
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+
+  .company-name {
+    font-family: var(--font-heading);
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .mobile-menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: var(--color-text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: calc(var(--spacing-unit) * 4);
+  }
+
+  .nav-list a {
+    color: var(--color-text);
+    font-weight: 500;
+    padding: calc(var(--spacing-unit) * 0.5) 0;
+    position: relative;
+  }
+
+  .nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-list a:hover::after,
+  .nav-list a.active::after {
+    width: 100%;
+  }
+
+  .nav-list a.active {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .mobile-menu-toggle {
+      display: flex;
+    }
+
+    .nav-list {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--color-background);
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid var(--color-gray);
+    }
+
+    .nav-list.active {
+      display: flex;
+    }
+
+    .nav-list li {
+      border-bottom: 1px solid var(--color-gray-light);
+    }
+
+    .nav-list li:last-child {
+      border-bottom: none;
+    }
+
+    .nav-list a {
+      display: block;
+      padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 3);
+    }
+
+    .nav-list a::after {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+  const navList = document.querySelector('.nav-list');
+
+  mobileMenuToggle?.addEventListener('click', () => {
+    navList?.classList.toggle('active');
+    mobileMenuToggle.classList.toggle('active');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      navList?.classList.remove('active');
+      mobileMenuToggle?.classList.remove('active');
+    }
+  });
+</script>

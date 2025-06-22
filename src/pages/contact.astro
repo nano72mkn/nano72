@@ -1,0 +1,292 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const contactMethods = [
+  {
+    type: 'email',
+    title: 'メール',
+    description: 'お問い合わせフォームまたはメールでご連絡ください',
+    action: 'contact@nano72.com',
+    icon: '✉️'
+  },
+  {
+    type: 'social',
+    title: 'ソーシャルメディア',
+    description: '最新情報はこちらでも発信しています',
+    action: '#',
+    icon: '💬'
+  }
+];
+---
+
+<BaseLayout title="お問い合わせ" description="nano72へのお問い合わせはこちらから。">
+  <section class="page-header">
+    <div class="container">
+      <h1>お問い合わせ</h1>
+      <p>ご意見・ご要望をお聞かせください</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-intro">
+          <p>
+            アプリに関するご質問、不具合のご報告、新機能のご提案など、<br>
+            お気軽にお問い合わせください。皆様の声を大切にし、<br>
+            より良いサービスの提供に努めてまいります。
+          </p>
+        </div>
+
+        <div class="contact-methods">
+          {contactMethods.map(method => (
+            <div class="contact-method">
+              <div class="method-icon">{method.icon}</div>
+              <h3>{method.title}</h3>
+              <p>{method.description}</p>
+              {method.type === 'email' ? (
+                <a href={`mailto:${method.action}`} class="contact-link">
+                  {method.action}
+                </a>
+              ) : (
+                <span class="contact-info">準備中</span>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div class="contact-form-section">
+          <h2>お問い合わせフォーム</h2>
+          <form class="contact-form" name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
+            
+            <div class="form-group">
+              <label for="name">お名前</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">メールアドレス</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">件名</label>
+              <select id="subject" name="subject" required>
+                <option value="">選択してください</option>
+                <option value="bug">不具合のご報告</option>
+                <option value="feature">機能のご提案</option>
+                <option value="question">ご質問</option>
+                <option value="other">その他</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">お問い合わせ内容</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">送信する</button>
+          </form>
+        </div>
+
+        <div class="response-time">
+          <h3>返信について</h3>
+          <p>
+            通常、3営業日以内にご返信いたします。<br>
+            お急ぎの場合は、件名に「至急」とご記入ください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
+    padding: calc(var(--spacing-unit) * 8) 0 calc(var(--spacing-unit) * 6);
+    text-align: center;
+  }
+
+  .page-header h1 {
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin: 0 0 calc(var(--spacing-unit) * 2);
+  }
+
+  .page-header p {
+    color: var(--color-text-light);
+    font-size: 1.125rem;
+    margin: 0;
+  }
+
+  .contact-section {
+    padding: calc(var(--spacing-unit) * 8) 0;
+  }
+
+  .contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .contact-intro {
+    text-align: center;
+    margin-bottom: calc(var(--spacing-unit) * 6);
+  }
+
+  .contact-intro p {
+    color: var(--color-text);
+    line-height: 1.8;
+  }
+
+  .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: calc(var(--spacing-unit) * 4);
+    margin-bottom: calc(var(--spacing-unit) * 8);
+  }
+
+  .contact-method {
+    background: var(--color-gray-light);
+    border-radius: 12px;
+    padding: calc(var(--spacing-unit) * 4);
+    text-align: center;
+  }
+
+  .method-icon {
+    font-size: 3rem;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .contact-method h3 {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 1);
+  }
+
+  .contact-method p {
+    color: var(--color-text-light);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    font-size: 0.875rem;
+  }
+
+  .contact-link {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  .contact-info {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  .contact-form-section {
+    background: var(--color-gray-light);
+    border-radius: 12px;
+    padding: calc(var(--spacing-unit) * 5);
+    margin-bottom: calc(var(--spacing-unit) * 6);
+  }
+
+  .contact-form-section h2 {
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 1);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: calc(var(--spacing-unit) * 1.5);
+    border: 1px solid var(--color-gray);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: white;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .submit-button {
+    display: block;
+    width: 100%;
+    padding: calc(var(--spacing-unit) * 2);
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .submit-button:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+  }
+
+  .response-time {
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 4);
+    background: #fff8f0;
+    border-radius: 12px;
+  }
+
+  .response-time h3 {
+    color: var(--color-primary);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .response-time p {
+    color: var(--color-text);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: calc(var(--spacing-unit) * 6) 0 calc(var(--spacing-unit) * 4);
+    }
+
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .contact-methods {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-form-section {
+      padding: calc(var(--spacing-unit) * 3);
+    }
+  }
+</style>

@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const apps = [
+  {
+    id: 'habit-tap',
+    name: 'habit tap',
+    tagline: '習慣化をシンプルに',
+    description: '毎日の習慣をタップで記録。シンプルな操作で継続をサポートする習慣化アプリです。',
+    features: [
+      'ワンタップで習慣を記録',
+      '継続日数の可視化',
+      'リマインダー機能',
+      'シンプルで見やすいUI'
+    ],
+    status: 'released',
+    icon: '✓',
+    color: '#4CAF50',
+    releaseDate: '2023年リリース'
+  },
+  {
+    id: 'evememo',
+    name: 'Evememo',
+    tagline: '大切な思い出を記録',
+    description: 'イベントや思い出を写真とメモで記録。大切な瞬間をいつでも振り返れるメモアプリです。',
+    features: [
+      'イベントごとに写真とメモを保存',
+      'タイムライン表示',
+      'カテゴリ分類',
+      'プライベートな思い出管理'
+    ],
+    status: 'development',
+    icon: '📝',
+    color: '#FF9800',
+    releaseDate: '2025年リリース予定'
+  }
+];
+---
+
+<BaseLayout title="アプリ一覧" description="nano72が開発したアプリケーションをご紹介します。">
+  <section class="page-header">
+    <div class="container">
+      <h1>アプリ一覧</h1>
+      <p>日常を少しだけ豊かにするアプリケーション</p>
+    </div>
+  </section>
+
+  <section class="apps-section">
+    <div class="container">
+      {apps.map((app, index) => (
+        <article class={`app-detail ${index % 2 === 1 ? 'reverse' : ''}`}>
+          <div class="app-icon-wrapper" style={`background-color: ${app.color}20;`}>
+            <span class="app-icon" style={`color: ${app.color};`}>{app.icon}</span>
+          </div>
+          
+          <div class="app-content">
+            <div class="app-header">
+              <h2>{app.name}</h2>
+              <span class={`status-badge ${app.status}`}>
+                {app.status === 'released' ? 'リリース済み' : '開発中'}
+              </span>
+            </div>
+            
+            <p class="app-tagline">{app.tagline}</p>
+            <p class="app-description">{app.description}</p>
+            
+            <div class="features">
+              <h3>主な機能</h3>
+              <ul>
+                {app.features.map(feature => (
+                  <li>{feature}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <p class="release-date">{app.releaseDate}</p>
+            
+            {app.status === 'released' && (
+              <div class="app-links">
+                <a href="#" class="store-link">
+                  <span>App Store</span>
+                </a>
+                <a href="#" class="store-link">
+                  <span>Google Play</span>
+                </a>
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="future-apps">
+    <div class="container">
+      <h2>今後の展開</h2>
+      <p>
+        nano72では、日常生活をサポートする新しいアプリケーションの開発を続けています。<br>
+        ユーザーの皆様の声を大切にしながら、より良いサービスを提供してまいります。
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
+    padding: calc(var(--spacing-unit) * 8) 0 calc(var(--spacing-unit) * 6);
+    text-align: center;
+  }
+
+  .page-header h1 {
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin: 0 0 calc(var(--spacing-unit) * 2);
+  }
+
+  .page-header p {
+    color: var(--color-text-light);
+    font-size: 1.125rem;
+    margin: 0;
+  }
+
+  .apps-section {
+    padding: calc(var(--spacing-unit) * 8) 0;
+  }
+
+  .app-detail {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: calc(var(--spacing-unit) * 6);
+    align-items: start;
+    margin-bottom: calc(var(--spacing-unit) * 10);
+  }
+
+  .app-detail:last-child {
+    margin-bottom: 0;
+  }
+
+  .app-detail.reverse {
+    grid-template-columns: 1fr 200px;
+  }
+
+  .app-detail.reverse .app-icon-wrapper {
+    order: 2;
+  }
+
+  .app-detail.reverse .app-content {
+    order: 1;
+  }
+
+  .app-icon-wrapper {
+    width: 200px;
+    height: 200px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: calc(var(--spacing-unit) * 10);
+  }
+
+  .app-icon {
+    font-size: 5rem;
+  }
+
+  .app-header {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 2);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .app-content h2 {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 2);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .status-badge.released {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .status-badge.development {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .app-tagline {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    font-weight: 500;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .app-description {
+    color: var(--color-text);
+    line-height: 1.8;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .features {
+    background: var(--color-gray-light);
+    border-radius: 12px;
+    padding: calc(var(--spacing-unit) * 3);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .features h3 {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .features ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  .features li {
+    position: relative;
+    padding-left: calc(var(--spacing-unit) * 3);
+    margin-bottom: calc(var(--spacing-unit) * 1);
+    color: var(--color-text);
+  }
+
+  .features li:last-child {
+    margin-bottom: 0;
+  }
+
+  .features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .release-date {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .app-links {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 2);
+  }
+
+  .store-link {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1);
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    background: var(--color-text);
+    color: white;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .store-link:hover {
+    background: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .future-apps {
+    background: var(--color-gray-light);
+    padding: calc(var(--spacing-unit) * 8) 0;
+    text-align: center;
+  }
+
+  .future-apps h2 {
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+  }
+
+  .future-apps p {
+    color: var(--color-text);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: calc(var(--spacing-unit) * 6) 0 calc(var(--spacing-unit) * 4);
+    }
+
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .app-detail,
+    .app-detail.reverse {
+      grid-template-columns: 1fr;
+      gap: calc(var(--spacing-unit) * 4);
+    }
+
+    .app-icon-wrapper {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+      position: static;
+    }
+
+    .app-detail.reverse .app-icon-wrapper,
+    .app-detail.reverse .app-content {
+      order: unset;
+    }
+
+    .app-icon {
+      font-size: 4rem;
+    }
+
+    .app-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .app-content h2 {
+      font-size: 1.75rem;
+    }
+
+    .app-links {
+      flex-direction: column;
+    }
+  }
+</style>

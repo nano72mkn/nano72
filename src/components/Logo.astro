@@ -1,0 +1,30 @@
+---
+export interface Props {
+  size?: number;
+  className?: string;
+}
+
+const { size = 40, className = '' } = Astro.props;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 100 100"
+  class={className}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <circle cx="50" cy="50" r="20" fill="#ff8c00" />
+  
+  <path d="M50 10 L50 25" stroke="#ff8c00" stroke-width="4" stroke-linecap="round" />
+  
+  <path d="M80 30 L68 38" stroke="#ff8c00" stroke-width="4" stroke-linecap="round" />
+  
+  <path d="M20 30 L32 38" stroke="#ff8c00" stroke-width="4" stroke-linecap="round" />
+</svg>
+
+<style>
+  svg {
+    display: block;
+  }
+</style>

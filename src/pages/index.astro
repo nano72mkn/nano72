@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Logo from '../components/Logo.astro';
+
+const apps = [
+  {
+    name: 'habit tap',
+    description: '習慣化をサポートするシンプルなアプリ',
+    status: 'リリース済み',
+    icon: '✓'
+  },
+  {
+    name: 'Evememo',
+    description: 'イベントの記録と思い出を管理',
+    status: '開発中',
+    icon: '📝'
+  }
+];
+---
+
+<BaseLayout title="ホーム">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <Logo size={80} className="hero-logo" />
+        <h1>nano72</h1>
+        <p class="tagline">小さな太陽のような、温かいアプリを。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <h2>私たちについて</h2>
+      <p>
+        nano72は、スマートフォン向けアプリケーションの企画・開発・運営を行う個人事業です。<br>
+        日常生活を少しだけ豊かにする、シンプルで使いやすいアプリケーションの開発を心がけています。
+      </p>
+    </div>
+  </section>
+
+  <section class="apps">
+    <div class="container">
+      <h2>開発アプリ</h2>
+      <div class="app-grid">
+        {apps.map(app => (
+          <div class="app-card">
+            <div class="app-icon">{app.icon}</div>
+            <h3>{app.name}</h3>
+            <p>{app.description}</p>
+            <span class="app-status">{app.status}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="container">
+      <h2>お問い合わせ</h2>
+      <p>
+        アプリに関するお問い合わせ、ご意見・ご要望は<br>
+        お気軽にご連絡ください。
+      </p>
+      <a href="/contact" class="cta-button">お問い合わせページへ</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: calc(var(--spacing-unit) * 10) 0;
+    text-align: center;
+    background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
+  }
+
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-logo {
+    margin: 0 auto calc(var(--spacing-unit) * 3);
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  section {
+    padding: calc(var(--spacing-unit) * 8) 0;
+  }
+
+  section h2 {
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+  }
+
+  .about {
+    background-color: var(--color-gray-light);
+  }
+
+  .about p {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.8;
+    color: var(--color-text);
+  }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: calc(var(--spacing-unit) * 4);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .app-card {
+    background: white;
+    border-radius: 12px;
+    padding: calc(var(--spacing-unit) * 4);
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .app-icon {
+    font-size: 3rem;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .app-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: calc(var(--spacing-unit) * 1);
+  }
+
+  .app-card p {
+    color: var(--color-text-light);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+  }
+
+  .app-status {
+    display: inline-block;
+    padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 2);
+    background-color: var(--color-gray-light);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: var(--color-text);
+  }
+
+  .contact {
+    background-color: var(--color-gray-light);
+    text-align: center;
+  }
+
+  .contact p {
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    color: var(--color-text);
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: calc(var(--spacing-unit) * 6) 0;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+    }
+
+    section {
+      padding: calc(var(--spacing-unit) * 6) 0;
+    }
+
+    .app-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
