@@ -14,6 +14,7 @@ export default {
       },
       fontFamily: {
         'sans': ['Noto Sans JP', 'sans-serif'],
+        'display': ['Zen Maru Gothic', 'sans-serif'],
       },
       fontSize: {
         'h1': '2.5rem',
