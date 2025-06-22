@@ -12,12 +12,15 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-container mx-auto px-6">
     <nav class="flex items-center justify-between h-20">
       <!-- ロゴ -->
-      <a href="/" class="flex items-center group">
+      <a href="/" class="flex items-center gap-3 group">
         <img 
           src="/logo.png" 
           alt="nano72" 
           class="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
         />
+        <span class="text-lg font-display font-medium text-text-primary group-hover:text-accent transition-colors duration-300">
+          ナノナツ
+        </span>
       </a>
       
       <!-- デスクトップナビゲーション -->
