@@ -1,7 +1,7 @@
-# nano72 会社サイト
+# ナノナツ 会社サイト
 
 ## 概要
-nano72の会社サイト。Astroで構築された静的サイトで、GitHub Pagesでホスティングされている。
+ナノナツの会社サイト。Astroで構築された静的サイトで、GitHub Pagesでホスティングされている。
 
 ## サイト情報
 - **URL**: https://nano72.com (GitHub Pages)

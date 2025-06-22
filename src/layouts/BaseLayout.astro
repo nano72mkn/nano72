@@ -11,7 +11,7 @@ export interface Props {
 
 const { 
   title, 
-  description = 'nano72 - スマートフォン向けアプリケーションの企画・開発・運営',
+  description = 'ナノナツ - スマートフォン向けアプリケーションの企画・開発・運営',
   ogImage = '/og-image.png'
 } = Astro.props;
 
@@ -25,7 +25,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     
-    <title>{title} | nano72</title>
+    <title>{title} | ナノナツ</title>
     <meta name="description" content={description} />
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -33,14 +33,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={`${title} | nano72`} />
+    <meta property="og:title" content={`${title} | ナノナツ`} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
-    <meta property="og:site_name" content="nano72" />
+    <meta property="og:site_name" content="ナノナツ" />
     <meta property="og:locale" content="ja_JP" />
     
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${title} | nano72`} />
+    <meta name="twitter:title" content={`${title} | ナノナツ`} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
     
