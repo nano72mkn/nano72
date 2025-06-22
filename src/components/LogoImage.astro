@@ -1,0 +1,23 @@
+---
+export interface Props {
+  size?: number;
+  className?: string;
+}
+
+const { size = 40, className = '' } = Astro.props;
+---
+
+<img 
+  src="/logo.png" 
+  alt="nano72 logo" 
+  width={size} 
+  height={size}
+  class={className}
+/>
+
+<style>
+  img {
+    display: block;
+    object-fit: contain;
+  }
+</style>

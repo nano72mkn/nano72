@@ -1,5 +1,5 @@
 ---
-import Logo from './Logo.astro';
+import LogoImage from './LogoImage.astro';
 
 const navItems = [
   { href: '/', label: 'ホーム' },
@@ -15,7 +15,7 @@ const currentPath = Astro.url.pathname;
   <div class="container">
     <nav>
       <a href="/" class="logo-link">
-        <Logo size={32} />
+        <LogoImage size={32} />
         <span class="company-name">nano72</span>
       </a>
       
