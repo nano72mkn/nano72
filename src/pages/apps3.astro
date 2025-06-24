@@ -1,0 +1,212 @@
+---
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import Header from '../components/portfolio/Header.astro';
+import Footer from '../components/portfolio/Footer.astro';
+
+const apps = [
+  {
+    name: 'habit tap',
+    description: '習慣化をサポートするシンプルなアプリ。毎日の小さな積み重ねを、タップひとつで記録。',
+    icon: '✓',
+    status: 'released' as const,
+    category: 'ライフスタイル',
+    platforms: ['iOS', 'Android'],
+    features: ['シンプルな習慣記録', 'カレンダービュー', 'リマインダー機能', 'ウィジェット対応'],
+    color: '#10b981'
+  },
+  {
+    name: 'Evememo',
+    description: 'イベントの記録と思い出を管理。大切な瞬間を、写真とメモで美しく保存。',
+    icon: '📝',
+    status: 'development' as const,
+    category: '写真・ビデオ',
+    platforms: ['iOS', 'Android'],
+    features: ['写真付きイベント記録', 'タイムライン表示', 'タグ管理', 'エクスポート機能'],
+    color: '#6366f1',
+    release: '2025年春予定'
+  },
+  {
+    name: 'ColorPick',
+    description: '写真から色を抽出するツール。デザイナーやクリエイター向けのカラーピッカー。',
+    icon: '🎨',
+    status: 'development' as const,
+    category: 'デザインツール',
+    platforms: ['iOS'],
+    features: ['カメラからリアルタイム色抽出', 'カラーパレット生成', 'HEX/RGB/HSL対応', '色の保存・共有'],
+    color: '#f43f5e',
+    release: '2025年夏予定'
+  }
+];
+---
+
+<PortfolioLayout 
+  title="Apps - ナノナツ" 
+  description="ナノナツが開発したスマートフォンアプリの一覧"
+>
+  <Header />
+  
+  <main class="flex-1 bg-base">
+    <!-- ヘッダー -->
+    <section class="border-b border-border">
+      <div class="max-w-container mx-auto px-6 py-12">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-3xl font-bold font-display text-text-primary mb-2">
+              アプリケーション
+            </h1>
+            <p class="text-text-secondary">
+              {apps.filter(app => app.status === 'released').length}個のアプリがリリース済み、
+              {apps.filter(app => app.status === 'development').length}個が開発中
+            </p>
+          </div>
+          <div class="hidden md:flex items-center gap-4">
+            <button class="px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
+              すべて
+            </button>
+            <button class="px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
+              リリース済み
+            </button>
+            <button class="px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
+              開発中
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- アプリリスト -->
+    <section class="py-8">
+      <div class="max-w-container mx-auto px-6">
+        <div class="space-y-6">
+          {apps.map((app, index) => (
+            <article 
+              class="bg-white rounded-xl border border-border hover:border-accent/30 transition-all duration-300 overflow-hidden group"
+            >
+              <div class="flex flex-col lg:flex-row">
+                <!-- 左側：基本情報 -->
+                <div class="flex-1 p-8">
+                  <div class="flex items-start gap-6">
+                    <!-- アイコン -->
+                    <div 
+                      class="w-20 h-20 rounded-2xl flex items-center justify-center text-3xl shrink-0 shadow-sm"
+                      style={`background-color: ${app.color}20; color: ${app.color}`}
+                    >
+                      {app.icon}
+                    </div>
+                    
+                    <!-- 情報 -->
+                    <div class="flex-1">
+                      <div class="flex items-start justify-between mb-3">
+                        <div>
+                          <h2 class="text-2xl font-bold font-display text-text-primary group-hover:text-accent transition-colors">
+                            {app.name}
+                          </h2>
+                          <div class="flex items-center gap-3 mt-1">
+                            <span class="text-sm text-text-secondary">{app.category}</span>
+                            <span class="text-sm text-text-secondary">•</span>
+                            <div class="flex gap-2">
+                              {app.platforms.map(platform => (
+                                <span class="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded">
+                                  {platform}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <span class={`
+                          text-sm px-3 py-1 rounded-full font-medium shrink-0
+                          ${app.status === 'released' 
+                            ? 'bg-green-100 text-green-700' 
+                            : 'bg-amber-100 text-amber-700'
+                          }
+                        `}>
+                          {app.status === 'released' ? 'リリース済み' : app.release || '開発中'}
+                        </span>
+                      </div>
+                      
+                      <p class="text-text-secondary mb-4">
+                        {app.description}
+                      </p>
+                      
+                      <!-- 機能リスト -->
+                      <div class="flex flex-wrap gap-2">
+                        {app.features.map(feature => (
+                          <span class="text-xs px-3 py-1 bg-accent-light text-accent rounded-md">
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 右側：アクション -->
+                <div class="lg:w-64 p-8 bg-sub-base/50 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-border">
+                  {app.status === 'released' ? (
+                    <div class="w-full space-y-3">
+                      <a 
+                        href="#" 
+                        class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+                      >
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        <span>App Store</span>
+                      </a>
+                      <a 
+                        href="#" 
+                        class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+                      >
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M3 20.5v-17c0-.83.67-1.5 1.5-1.5S6 2.67 6 3.5v17c0 .83-.67 1.5-1.5 1.5S3 21.33 3 20.5zm16.5-16.5c-.83 0-1.5.67-1.5 1.5v11c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-11c0-.83-.67-1.5-1.5-1.5zm-8 5c-.83 0-1.5.67-1.5 1.5v6c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-6c0-.83-.67-1.5-1.5-1.5z"/>
+                        </svg>
+                        <span>Google Play</span>
+                      </a>
+                    </div>
+                  ) : (
+                    <div class="text-center">
+                      <div class="w-20 h-20 mx-auto mb-3 rounded-full bg-accent-light flex items-center justify-center">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                      </div>
+                      <p class="text-sm font-medium text-text-secondary">
+                        開発中
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- 統計セクション -->
+    <section class="py-20 bg-gradient-to-b from-white to-accent-light">
+      <div class="max-w-container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 text-center">
+          <div>
+            <p class="text-4xl font-bold text-accent mb-2">3</p>
+            <p class="text-text-secondary">開発アプリ数</p>
+          </div>
+          <div>
+            <p class="text-4xl font-bold text-accent mb-2">10K+</p>
+            <p class="text-text-secondary">総ダウンロード数</p>
+          </div>
+          <div>
+            <p class="text-4xl font-bold text-accent mb-2">4.5</p>
+            <p class="text-text-secondary">平均評価</p>
+          </div>
+          <div>
+            <p class="text-4xl font-bold text-accent mb-2">120+</p>
+            <p class="text-text-secondary">レビュー数</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</PortfolioLayout>

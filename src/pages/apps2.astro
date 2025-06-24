@@ -40,20 +40,25 @@ const apps = [
   <Header />
   
   <main class="flex-1">
-    <!-- ページヘッダー -->
-    <section class="py-16 md:py-20 bg-sub-base">
-      <div class="max-w-container mx-auto px-6 text-center">
-        <h1 class="text-3xl md:text-4xl font-bold font-display text-text-primary mb-4 animate-fadeIn">
-          Apps
+    <!-- ヒーローセクション -->
+    <section class="relative py-20 md:py-32 bg-gradient-to-br from-accent-light via-white to-sub-base overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="absolute top-20 left-20 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div class="relative z-10 max-w-container mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold font-display text-text-primary mb-6 animate-fadeIn">
+          Our Apps
         </h1>
-        <p class="text-lg text-text-secondary animate-fadeIn" style="animation-delay: 0.1s">
-          開発したアプリケーション
+        <p class="text-xl text-text-secondary max-w-2xl mx-auto animate-fadeIn" style="animation-delay: 0.1s">
+          日常を豊かにする、シンプルで美しいアプリケーション
         </p>
       </div>
     </section>
     
     <!-- アプリグリッド -->
-    <section class="py-20">
+    <section class="py-20 -mt-10">
       <div class="max-w-container mx-auto px-6">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {apps.map((app, index) => (
