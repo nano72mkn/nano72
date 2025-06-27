@@ -3,24 +3,25 @@ export interface Props {
   name: string;
   description: string;
   icon?: string;
+  iconType?: 'emoji' | 'image';
   status: 'released' | 'development';
   tags?: string[];
   link?: string;
   image?: string;
 }
 
-const { name, description, icon = '📱', status, tags = [], link = '#', image } = Astro.props;
+const { name, description, icon = '📱', iconType = 'emoji', status, tags = [], link = '#', image } = Astro.props;
 ---
 
 <article class="group bg-white rounded-xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
-  <a href={link} class="block">
+  <a href={link} class="block" target={link.startsWith('http') ? '_blank' : '_self'} rel={link.startsWith('http') ? 'noopener noreferrer' : undefined}>
     <!-- アイコン/画像 -->
     <div class="mb-4">
-      {image ? (
+      {iconType === 'image' ? (
         <img 
-          src={image} 
+          src={icon} 
           alt={`${name}のアイコン`}
-          class="w-16 h-16 rounded-xl object-cover"
+          class="w-16 h-16 rounded-xl object-cover shadow-sm"
         />
       ) : (
         <div class="w-16 h-16 bg-accent-light rounded-xl flex items-center justify-center text-2xl">

@@ -3,28 +3,16 @@ import PortfolioLayout from '../layouts/PortfolioLayout.astro';
 import Header from '../components/portfolio/Header.astro';
 import Footer from '../components/portfolio/Footer.astro';
 
-const skills = [
-  { name: 'iOS開発', level: 90 },
-  { name: 'Android開発', level: 85 },
-  { name: 'UI/UXデザイン', level: 80 },
-  { name: 'フロントエンド開発', level: 85 },
-];
-
 const timeline = [
   {
-    year: '2023',
-    title: 'habit tapリリース',
-    description: '習慣化サポートアプリをリリース。多くのユーザーに愛用していただいています。'
+    year: '2025',
+    title: 'ナノナツとして開業',
+    description: '7月2日に個人事業主として開業。スマートフォンアプリ開発を本格的に開始。'
   },
   {
-    year: '2022',
-    title: 'ナノナツとして活動開始',
-    description: '個人事業主として独立。スマートフォンアプリ開発を本格的に開始。'
-  },
-  {
-    year: '2020',
-    title: 'アプリ開発を開始',
-    description: '趣味としてアプリ開発を始める。小さなツールから制作をスタート。'
+    year: '2025',
+    title: 'Habit Tap開発・リリース',
+    description: '習慣化サポートアプリ「Habit Tap」をiOS向けにリリース。'
   }
 ];
 ---
@@ -61,7 +49,7 @@ const timeline = [
               ナノナツという屋号で、スマートフォンアプリの個人開発を行っています。
             </p>
             <p class="text-text-secondary leading-relaxed">
-              「小さな太陽」という意味を込めた名前の通り、日常生活に小さな温かさと幸せをお届けするアプリケーションを作ることを目指しています。
+              「小さい夏」という意味を込めた名前の通り、夏休みの自由研究のように、作りたいもの、欲しいものを自由に作って、それでいてみんながほっこりするようなアプリをお届けすることを目指しています。
             </p>
             <p class="text-text-secondary leading-relaxed">
               シンプルで使いやすく、それでいて心に残る。そんなアプリケーションを通じて、ユーザーの皆様の毎日が少しでも豊かになることを願っています。
@@ -94,52 +82,26 @@ const timeline = [
         
         <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div class="text-center">
-            <div class="text-4xl mb-4">🎯</div>
-            <h3 class="text-xl font-semibold font-display text-text-primary mb-3">シンプル</h3>
+            <div class="text-4xl mb-4">🌻</div>
+            <h3 class="text-xl font-semibold font-display text-text-primary mb-3">自由な発想</h3>
             <p class="text-sm text-text-secondary">
-              本当に必要な機能だけを、分かりやすく提供します
+              夏休みの自由研究のように、作りたいものを素直に形にします
             </p>
           </div>
           <div class="text-center">
             <div class="text-4xl mb-4">❤️</div>
             <h3 class="text-xl font-semibold font-display text-text-primary mb-3">温かみ</h3>
             <p class="text-sm text-text-secondary">
-              技術だけでなく、使う人の心に寄り添うアプリを作ります
+              使う人がほっこりする、心に寄り添うアプリを作ります
             </p>
           </div>
           <div class="text-center">
-            <div class="text-4xl mb-4">✨</div>
-            <h3 class="text-xl font-semibold font-display text-text-primary mb-3">継続的改善</h3>
+            <div class="text-4xl mb-4">🎐</div>
+            <h3 class="text-xl font-semibold font-display text-text-primary mb-3">日常の彩り</h3>
             <p class="text-sm text-text-secondary">
-              ユーザーの声を大切に、より良いアプリへと進化させます
+              毎日の生活に小さな楽しみと豊かさを添えます
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- スキルセクション -->
-    <section class="py-20">
-      <div class="max-w-container mx-auto px-6">
-        <h2 class="text-2xl md:text-3xl font-bold font-display text-text-primary mb-12 text-center">
-          スキル
-        </h2>
-        
-        <div class="max-w-2xl mx-auto space-y-6">
-          {skills.map(skill => (
-            <div>
-              <div class="flex justify-between items-center mb-2">
-                <span class="text-text-primary font-medium">{skill.name}</span>
-                <span class="text-sm text-text-secondary">{skill.level}%</span>
-              </div>
-              <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div 
-                  class="h-full bg-accent rounded-full transition-all duration-1000 ease-out"
-                  style={`width: ${skill.level}%`}
-                ></div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>

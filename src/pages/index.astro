@@ -3,46 +3,68 @@ import PortfolioLayout from '../layouts/PortfolioLayout.astro';
 import Header from '../components/portfolio/Header.astro';
 import Footer from '../components/portfolio/Footer.astro';
 import AppCard from '../components/portfolio/AppCard.astro';
+import { getCollection } from 'astro:content';
 
 const featuredApps = [
   {
-    name: 'habit tap',
+    name: 'Habit Tap',
     description: '習慣化をサポートするシンプルなアプリ。毎日の小さな積み重ねを、タップひとつで記録。',
-    icon: '✓',
+    icon: '/habit-tap-icon.png',
+    iconType: 'image' as const,
     status: 'released' as const,
-    tags: ['iOS', 'Android'],
-    link: '/apps#habit-tap'
+    tags: ['iOS'],
+    link: '/habit-tap'
+  },
+  {
+    name: 'irodori',
+    description: '日々の生活に彩りを。毎日を豊かにするミッション管理アプリ。',
+    icon: '/irodori-icon.svg',
+    iconType: 'image' as const,
+    status: 'released' as const,
+    tags: ['iOS', 'Web'],
+    link: 'https://irodori-mission.me/'
+  },
+  {
+    name: 'Share Basket',
+    description: '共有を簡単に。大切な情報やリンクをスマートに管理・共有できるアプリ。',
+    icon: '/share-basket-icon.svg',
+    iconType: 'image' as const,
+    status: 'released' as const,
+    tags: ['iOS'],
+    link: 'https://share-basket.app/'
   },
   {
     name: 'Evememo',
-    description: 'イベントの記録と思い出を管理。大切な瞬間を、写真とメモで美しく保存。',
-    icon: '📝',
+    description: 'SNSやWebからシェアするだけで、AIが情報を整理。行きたいイベントを賢く集約。',
+    icon: '/evememo-icon.png',
+    iconType: 'image' as const,
     status: 'development' as const,
     tags: ['iOS', 'Android'],
-    link: '/apps#evememo'
+    link: '/evememo'
   }
 ];
 
-const news = [
-  {
-    date: '2024.03.01',
-    title: 'Evememoの開発を開始しました',
-    link: '#'
-  },
-  {
-    date: '2023.12.15',
-    title: 'habit tapがApp Storeでフィーチャーされました',
-    link: '#'
-  },
-  {
-    date: '2023.10.01',
-    title: 'nano72.comをリニューアルしました',
-    link: '#'
-  }
-];
+// お知らせを取得
+const allNews = await getCollection('news', ({ data }) => {
+  return data.draft !== true;
+});
+
+// 日付順にソートして最新3件を取得
+const news = allNews
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3)
+  .map(entry => ({
+    date: entry.data.publishDate.toLocaleDateString('ja-JP', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).replace(/\//g, '.'),
+    title: entry.data.title,
+    link: `/news/${entry.slug}`
+  }));
 ---
 
-<PortfolioLayout title="ナノナツ - 小さな太陽のような、温かいアプリを。">
+<PortfolioLayout title="ナノナツ - 小さな夏のような、温かいアプリを。">
   <Header />
   
   <main class="flex-1">
@@ -79,7 +101,7 @@ const news = [
         
         <!-- メインタイトル -->
         <h1 class="text-3xl md:text-5xl font-bold font-display text-text-primary mb-6 leading-relaxed animate-fadeIn" style="animation-delay: 0.1s">
-          小さな太陽のような
+          小さな夏のような
           <span class="block mt-2 text-accent">温かいアプリを。</span>
         </h1>
         
@@ -92,17 +114,8 @@ const news = [
         <!-- CTA ボタン -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fadeIn" style="animation-delay: 0.3s">
           <a 
-            href="/apps" 
-            class="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-medium rounded-full hover:bg-accent-hover transition-all duration-300 shadow-sm hover:shadow-md group"
-          >
-            <span>アプリを見る</span>
-            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </a>
-          <a 
             href="/about" 
-            class="inline-flex items-center justify-center px-6 py-3 bg-white text-text-secondary font-medium rounded-full hover:bg-gray-50 transition-all duration-300 border border-gray-200 hover:border-gray-300"
+            class="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-medium rounded-full hover:bg-accent-hover transition-all duration-300 shadow-sm hover:shadow-md"
           >
             <span>About ナノナツ</span>
           </a>
@@ -122,47 +135,39 @@ const news = [
             <AppCard {...app} />
           ))}
           
-          <!-- もっと見るカード -->
-          <article class="bg-white/50 rounded-xl p-6 border-2 border-dashed border-gray-300 flex items-center justify-center">
-            <a 
-              href="/apps" 
-              class="text-center group"
-            >
-              <div class="text-4xl mb-3 opacity-50 group-hover:opacity-70 transition-opacity">
-                →
-              </div>
-              <p class="text-text-secondary group-hover:text-accent transition-colors duration-300">
-                すべてのアプリを見る
-              </p>
-            </a>
-          </article>
         </div>
       </div>
     </section>
     
     <!-- お知らせセクション -->
-    <section class="py-20">
+    <section id="news" class="py-20">
       <div class="max-w-container mx-auto px-6">
         <h2 class="text-2xl md:text-3xl font-bold font-display text-text-primary mb-12 text-center">
           お知らせ
         </h2>
         
         <div class="max-w-2xl mx-auto">
-          <ul class="space-y-4">
-            {news.map(item => (
-              <li class="border-b border-border pb-4 last:border-0">
-                <a href={item.link} class="group flex items-start justify-between hover:text-accent transition-colors duration-300">
-                  <div>
-                    <time class="text-sm text-text-secondary">{item.date}</time>
-                    <h3 class="font-medium font-display mt-1">{item.title}</h3>
-                  </div>
-                  <svg class="w-5 h-5 text-text-secondary group-hover:text-accent mt-1 transition-all duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </li>
-            ))}
-          </ul>
+          {news.length > 0 ? (
+            <ul class="space-y-4">
+              {news.map(item => (
+                <li class="border-b border-border pb-4 last:border-0">
+                  <a href={item.link} class="group flex items-start justify-between hover:text-accent transition-colors duration-300">
+                    <div>
+                      <time class="text-sm text-text-secondary">{item.date}</time>
+                      <h3 class="font-medium font-display mt-1">{item.title}</h3>
+                    </div>
+                    <svg class="w-5 h-5 text-text-secondary group-hover:text-accent mt-1 transition-all duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p class="text-center text-text-secondary">
+              お知らせはまだありません。
+            </p>
+          )}
         </div>
       </div>
     </section>

@@ -1,0 +1,192 @@
+---
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import Header from '../components/portfolio/Header.astro';
+import Footer from '../components/portfolio/Footer.astro';
+
+const features = [
+  {
+    title: 'シンプルな記録',
+    description: 'タップするだけで習慣を記録。複雑な操作は不要です。',
+    icon: '👆'
+  },
+  {
+    title: '視覚的な進捗確認',
+    description: 'カレンダービューで継続状況が一目瞭然。',
+    icon: '📊'
+  },
+  {
+    title: '習慣の管理',
+    description: '複数の習慣を同時に管理。色分けで見やすく整理。',
+    icon: '📝'
+  },
+  {
+    title: 'リマインダー機能',
+    description: '通知で習慣化をサポート。忘れずに継続できます。',
+    icon: '🔔'
+  }
+];
+---
+
+<PortfolioLayout 
+  title="Habit Tap - ナノナツ" 
+  description="習慣化をサポートするシンプルなアプリ。毎日の小さな積み重ねを、タップひとつで記録。"
+>
+  <Header />
+  
+  <main class="flex-1">
+    <!-- ヒーローセクション -->
+    <section class="py-16 md:py-20 bg-gradient-to-br from-green-50 to-green-100">
+      <div class="max-w-container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-6">
+              <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+              iOS版リリース中
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold font-display text-text-primary mb-6">
+              Habit Tap
+            </h1>
+            <p class="text-xl text-text-secondary mb-8 leading-relaxed">
+              習慣化をサポートするシンプルなアプリ。<br />
+              毎日の小さな積み重ねを、タップひとつで記録。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="https://apps.apple.com/jp/app/habit-tap/id6747366699"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-3 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300"
+              >
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                <span>App Storeで入手</span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- アプリアイコン -->
+          <div class="relative">
+            <div class="max-w-sm mx-auto">
+              <img 
+                src="/habit-tap-icon.png" 
+                alt="Habit Tap アプリアイコン" 
+                class="w-48 h-48 md:w-64 md:h-64 mx-auto rounded-[3rem] shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 特徴セクション -->
+    <section class="py-20">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-text-primary mb-4 text-center">
+          Habit Tapの特徴
+        </h2>
+        <p class="text-text-secondary text-center mb-12 max-w-2xl mx-auto">
+          習慣化に必要な機能だけを厳選。シンプルだから続けられる。
+        </p>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map(feature => (
+            <div class="text-center">
+              <div class="text-5xl mb-4">{feature.icon}</div>
+              <h3 class="text-lg font-semibold font-display text-text-primary mb-2">
+                {feature.title}
+              </h3>
+              <p class="text-sm text-text-secondary">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- 使い方セクション -->
+    <section class="py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-text-primary mb-12 text-center">
+          かんたん3ステップ
+        </h2>
+        
+        <div class="max-w-3xl mx-auto">
+          <div class="space-y-8">
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold">
+                1
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold font-display text-text-primary mb-2">
+                  習慣を登録
+                </h3>
+                <p class="text-text-secondary">
+                  続けたい習慣を登録。名前と色を設定するだけ。
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold">
+                2
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold font-display text-text-primary mb-2">
+                  毎日タップ
+                </h3>
+                <p class="text-text-secondary">
+                  習慣を実行したらタップ。それだけで記録完了。
+                </p>
+              </div>
+            </div>
+            
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center font-bold">
+                3
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold font-display text-text-primary mb-2">
+                  継続を確認
+                </h3>
+                <p class="text-text-secondary">
+                  カレンダーで継続状況を確認。モチベーションアップ！
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ダウンロードCTA -->
+    <section class="py-20">
+      <div class="max-w-container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-text-primary mb-6">
+          今すぐ始めよう
+        </h2>
+        <p class="text-lg text-text-secondary mb-8 max-w-2xl mx-auto">
+          Habit Tapで、新しい習慣を始めてみませんか？
+        </p>
+        <a 
+          href="https://apps.apple.com/jp/app/habit-tap/id6747366699"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-8 py-4 bg-accent text-white font-medium rounded-lg hover:bg-accent-hover transition-colors duration-300 shadow-lg hover:shadow-xl"
+        >
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <span>App Storeでダウンロード</span>
+        </a>
+        
+        <p class="text-sm text-text-secondary mt-6">
+          ※ 現在iOS版のみリリース中です。Android版は準備中です。
+        </p>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</PortfolioLayout>

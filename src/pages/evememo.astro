@@ -1,0 +1,164 @@
+---
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import Header from '../components/portfolio/Header.astro';
+import Footer from '../components/portfolio/Footer.astro';
+
+const features = [
+  {
+    title: 'かんたんシェア',
+    description: 'SNSやWebサイトから気になるイベントをワンタップでシェア。',
+    icon: '📤'
+  },
+  {
+    title: 'AI自動整理',
+    description: 'AIが日時・場所・カテゴリーなどの情報を自動で抽出・整理。',
+    icon: '🤖'
+  },
+  {
+    title: 'スマート検索',
+    description: '日付・場所・カテゴリーで素早く検索。行きたいイベントがすぐ見つかる。',
+    icon: '🔍'
+  },
+  {
+    title: 'リマインダー',
+    description: 'イベント前に通知でお知らせ。大切なイベントを見逃さない。',
+    icon: '🔔'
+  }
+];
+---
+
+<PortfolioLayout 
+  title="Evememo - ナノナツ" 
+  description="SNSやWebからシェアするだけで、AIが情報を整理。行きたいイベントを賢く集約。"
+>
+  <Header />
+  
+  <main class="flex-1">
+    <!-- ヒーローセクション -->
+    <section class="py-16 md:py-20 bg-gradient-to-br from-purple-50 via-blue-50 to-purple-50">
+      <div class="max-w-container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-6">
+              <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+              2025年夏リリース予定
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold font-display text-text-primary mb-6">
+              Evememo
+            </h1>
+            <p class="text-xl text-text-secondary mb-8 leading-relaxed">
+              行きたいイベント、全部ここに。<br />
+              SNSやWebからシェアするだけで、<br />
+              AIが賢く情報を整理します。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <div class="inline-flex items-center justify-center px-6 py-3 bg-gray-200 text-gray-500 rounded-lg cursor-not-allowed">
+                <span>Coming Soon</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- アプリアイコン -->
+          <div class="relative">
+            <div class="max-w-sm mx-auto">
+              <img 
+                src="/evememo-icon.png" 
+                alt="Evememo アプリアイコン" 
+                class="w-48 h-48 md:w-64 md:h-64 mx-auto rounded-[3rem] shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 特徴セクション -->
+    <section class="py-20">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-text-primary mb-4 text-center">
+          Evememoの特徴
+        </h2>
+        <p class="text-text-secondary text-center mb-12 max-w-2xl mx-auto">
+          イベント情報の収集から管理まで、すべてをスマートに。
+        </p>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map(feature => (
+            <div class="text-center">
+              <div class="text-5xl mb-4">{feature.icon}</div>
+              <h3 class="text-lg font-semibold font-display text-text-primary mb-2">
+                {feature.title}
+              </h3>
+              <p class="text-sm text-text-secondary">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- 使い方セクション -->
+    <section class="py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-text-primary mb-12 text-center">
+          こんなシーンで活躍
+        </h2>
+        
+        <div class="max-w-3xl mx-auto space-y-8">
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold font-display text-text-primary mb-3 flex items-center gap-2">
+              <span class="text-2xl">📱</span>
+              SNSで見つけたイベント
+            </h3>
+            <p class="text-text-secondary">
+              X（Twitter）やInstagramで見つけた展示会やライブ情報を、シェアボタンからEvememoへ。後でゆっくり確認できます。
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold font-display text-text-primary mb-3 flex items-center gap-2">
+              <span class="text-2xl">🌐</span>
+              Webサイトのイベント情報
+            </h3>
+            <p class="text-text-secondary">
+              美術館の公式サイトやイベント情報サイトから、気になるイベントをワンタップで保存。詳細情報もAIが自動抽出。
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold font-display text-text-primary mb-3 flex items-center gap-2">
+              <span class="text-2xl">📅</span>
+              週末の予定を立てる時
+            </h3>
+            <p class="text-text-secondary">
+              保存したイベントを日付や場所で検索。週末の予定がサクサク決まります。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTAセクション -->
+    <section class="py-20">
+      <div class="max-w-container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-text-primary mb-6">
+          2025年夏、リリース予定
+        </h2>
+        <p class="text-lg text-text-secondary mb-8 max-w-2xl mx-auto">
+          イベント情報の新しい管理方法を、Evememoで体験してください。
+        </p>
+        
+        <div class="inline-flex items-center gap-4 text-text-secondary">
+          <span class="text-sm">対応予定プラットフォーム：</span>
+          <div class="flex gap-2">
+            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">iOS</span>
+            <span class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm">Android</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</PortfolioLayout>

@@ -1,12 +1,13 @@
 # ナノナツ 会社サイト
 
 ## 概要
-ナノナツの会社サイト。Astroで構築された静的サイトで、GitHub Pagesでホスティングされている。
+ナノナツの会社サイト。Astroで構築された静的サイトで、Netlifyでホスティングされている。
 
 ## サイト情報
-- **URL**: https://nano72.com (GitHub Pages)
+- **URL**: https://nano72.com (Netlify)
 - **会社名**: ナノナツ
 - **事業内容**: スマートフォン向けアプリケーションの企画・開発・運営
+- **開業日**: 2025年7月2日
 
 ## 技術スタック
 - **フレームワーク**: Astro v5.10.0
@@ -50,13 +51,26 @@ src/
 - `/public/favicon.svg` - ファビコン（SVG形式の太陽アイコン）
 
 ## 開発アプリ
-1. **habit tap**
+1. **Habit Tap**
    - 習慣化サポートアプリ
-   - ステータス: リリース済み
+   - ステータス: リリース済み（iOS版のみ）
+   - URL: https://nano72.com/habit-tap
    
-2. **Evememo**
-   - イベント記録・思い出管理アプリ
-   - ステータス: 開発中（2025年リリース予定）
+2. **irodori**
+   - ミッション管理アプリ
+   - ステータス: リリース済み（iOS版、Web版）
+   - URL: https://irodori-mission.me/
+   - App Store: https://apple.co/3I2yLnm
+   
+3. **Share Basket**
+   - 情報・リンク管理共有アプリ
+   - ステータス: リリース済み（iOS版のみ）
+   - URL: https://share-basket.app/
+   
+4. **Evememo**
+   - AI活用イベント情報整理アプリ
+   - SNSやWebからシェアするだけでAIが情報を整理
+   - ステータス: 開発中（2025年夏リリース予定）
 
 ## 開発コマンド
 ```bash
@@ -83,5 +97,8 @@ npm run preview
 ## 注意事項
 - レスポンシブ対応済み
 - 日本語サイト
-- お問い合わせフォームはNetlify Forms想定（GitHub Pagesでは別途対応必要）
+- お問い合わせフォームはNetlify Forms使用
 - OGP画像は現在ロゴ画像を使用（専用画像への差し替え推奨）
+
+## 開発ルール
+- 仕様を変更した時に、ドキュメントを確認し、修正しましょう
