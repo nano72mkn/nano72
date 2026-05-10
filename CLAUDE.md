@@ -63,19 +63,13 @@ src/
    - 習慣化サポートアプリ
    - ステータス: リリース済み（iOS版のみ）
    - URL: https://nano72.com/habit-tap
-   
-2. **irodori**
-   - ミッション管理アプリ
-   - ステータス: リリース済み（iOS版、Web版）
-   - URL: https://irodori-mission.me/
-   - App Store: https://apple.co/3I2yLnm
-   
-3. **Share Basket**
+
+2. **Share Basket**
    - 情報・リンク管理共有アプリ
    - ステータス: リリース済み（iOS版のみ）
    - URL: https://share-basket.app/
-   
-4. **Evememo**
+
+3. **Evememo**
    - AI活用イベント情報整理アプリ
    - SNSやWebからシェアするだけでAIが情報を整理
    - ステータス: 開発中（2025年夏リリース予定）
