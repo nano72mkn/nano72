@@ -5,16 +5,35 @@ const socialLinks = [
   { name: 'GitHub', url: 'https://github.com/nano72mkn', icon: 'github' },
   { name: 'Twitter', url: 'https://twitter.com/nano72mkn', icon: 'twitter' },
 ];
+
+const legalLinks = [
+  { name: '会社概要', href: '/about#company' },
+  { name: 'プライバシーポリシー', href: '/privacy' },
+  { name: '利用規約', href: '/terms' },
+  { name: 'お問い合わせ', href: '/contact' },
+];
 ---
 
 <footer class="mt-auto bg-sub-base">
   <div class="max-w-container mx-auto px-6 py-12">
+    <!-- 法務・ナビゲーションリンク -->
+    <nav class="mb-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
+      {legalLinks.map(link => (
+        <a
+          href={link.href}
+          class="text-sm text-text-secondary hover:text-accent transition-colors duration-300"
+        >
+          {link.name}
+        </a>
+      ))}
+    </nav>
+
     <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
       <!-- 著作権表示 -->
       <p class="text-sm text-text-secondary">
         © {currentYear} ナノナツ. All rights reserved.
       </p>
-      
+
       <!-- ソーシャルリンクとBuy Me a Coffee -->
       <div class="flex items-center space-x-6">
         {socialLinks.map(link => (

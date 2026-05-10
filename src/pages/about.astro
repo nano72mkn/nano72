@@ -15,6 +15,16 @@ const timeline = [
     description: '習慣化サポートアプリ「Habit Tap」をiOS向けにリリース。'
   }
 ];
+
+const companyInfo = [
+  { label: '屋号', value: 'nano72（読み：ナノナツ）' },
+  { label: '代表者', value: '宮平 将汰' },
+  { label: '所在地', value: '〒150-0041 東京都渋谷区神南１丁目１１−４ ＦＰＧリンクス神南 5階' },
+  { label: '開業日', value: '2025年7月2日' },
+  { label: '事業内容', value: 'スマートフォン向けアプリケーションの企画・開発・運営' },
+  { label: '連絡先', value: 'contact@nano72.com' },
+  { label: 'ウェブサイト', value: 'https://nano72.com' },
+];
 ---
 
 <PortfolioLayout 
@@ -112,19 +122,19 @@ const timeline = [
         <h2 class="text-2xl md:text-3xl font-bold font-display text-text-primary mb-12 text-center">
           あゆみ
         </h2>
-        
+
         <div class="max-w-2xl mx-auto">
           <div class="relative">
             <!-- 縦線 -->
             <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-border"></div>
-            
+
             <!-- タイムライン項目 -->
             <div class="space-y-8">
               {timeline.map((item, index) => (
                 <div class="relative flex items-start">
                   <!-- ドット -->
                   <div class="absolute left-8 w-4 h-4 bg-accent rounded-full -translate-x-1/2 mt-1.5"></div>
-                  
+
                   <!-- コンテンツ -->
                   <div class="ml-16">
                     <div class="text-sm text-accent font-medium mb-1">{item.year}</div>
@@ -138,7 +148,34 @@ const timeline = [
         </div>
       </div>
     </section>
+
+    <!-- 事業者情報セクション -->
+    <section id="company" class="py-20">
+      <div class="max-w-container mx-auto px-6">
+        <h2 class="text-2xl md:text-3xl font-bold font-display text-text-primary mb-4 text-center">
+          事業者情報
+        </h2>
+        <p class="text-center text-text-secondary mb-12">
+          ナノナツの事業者情報です。
+        </p>
+
+        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-card overflow-hidden">
+          <dl class="divide-y divide-border">
+            {companyInfo.map(item => (
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 px-6 py-5">
+                <dt class="text-sm font-semibold font-display text-text-primary md:col-span-1">
+                  {item.label}
+                </dt>
+                <dd class="text-sm text-text-secondary md:col-span-2 break-words">
+                  {item.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
   </main>
-  
+
   <Footer />
 </PortfolioLayout>

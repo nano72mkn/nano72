@@ -1,0 +1,150 @@
+---
+import PortfolioLayout from '../layouts/PortfolioLayout.astro';
+import Header from '../components/portfolio/Header.astro';
+import Footer from '../components/portfolio/Footer.astro';
+
+const lastUpdated = '2025年7月2日';
+---
+
+<PortfolioLayout
+  title="プライバシーポリシー - ナノナツ"
+  description="ナノナツのプライバシーポリシー（個人情報の取り扱いについて）"
+>
+  <Header />
+
+  <main class="flex-1">
+    <!-- ページヘッダー -->
+    <section class="py-16 md:py-20 bg-sub-base">
+      <div class="max-w-container mx-auto px-6 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold font-display text-text-primary mb-4 animate-fadeIn">
+          プライバシーポリシー
+        </h1>
+        <p class="text-lg text-text-secondary animate-fadeIn" style="animation-delay: 0.1s">
+          個人情報の取り扱いについて
+        </p>
+      </div>
+    </section>
+
+    <!-- 本文 -->
+    <article class="py-20">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="prose prose-lg max-w-none
+          prose-headings:font-display prose-headings:text-text-primary
+          prose-p:text-text-secondary prose-p:leading-relaxed
+          prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+          prose-strong:text-text-primary
+          prose-ul:text-text-secondary prose-ol:text-text-secondary
+          prose-li:my-1
+        ">
+          <p>
+            nano72（読み：ナノナツ。以下「当方」といいます）は、当方が提供するスマートフォン向けアプリケーションおよびウェブサイト（以下「本サービス」といいます）における、利用者の個人情報の取り扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます）を定めます。
+          </p>
+
+          <h2>1. 取得する情報</h2>
+          <p>
+            当方は、本サービスの提供にあたり、以下の情報を取得することがあります。
+          </p>
+          <ul>
+            <li>お問い合わせフォームを通じてご提供いただく情報（氏名、メールアドレス、お問い合わせ内容など）</li>
+            <li>本サービスの利用にあたり、利用者の端末上で生成・記録される情報（アプリ内の設定、履歴、入力データなど。これらは原則として利用者の端末内にのみ保存されます）</li>
+            <li>アクセス解析ツールにより自動的に取得される情報（IPアドレス、Cookie、閲覧ページ、利用環境、リファラなど）</li>
+            <li>クラッシュレポートやパフォーマンス計測ツールにより自動的に取得される情報（端末識別子、OSバージョン、アプリのバージョン、エラー内容など）</li>
+          </ul>
+
+          <h2>2. 利用目的</h2>
+          <p>
+            当方は、取得した情報を以下の目的で利用します。
+          </p>
+          <ul>
+            <li>本サービスの提供、維持、改善のため</li>
+            <li>お問い合わせへの対応のため</li>
+            <li>不具合の調査、原因究明、再発防止のため</li>
+            <li>新機能・アップデート等のお知らせのため</li>
+            <li>利用状況の分析および本サービスの品質向上のため</li>
+            <li>規約に違反する行為への対応のため</li>
+          </ul>
+
+          <h2>3. 第三者への提供</h2>
+          <p>
+            当方は、次の場合を除き、利用者の個人情報を第三者に提供しません。
+          </p>
+          <ul>
+            <li>利用者の同意がある場合</li>
+            <li>法令に基づく場合</li>
+            <li>人の生命、身体または財産の保護のために必要であって、利用者の同意を得ることが困難な場合</li>
+            <li>業務委託先に対し、利用目的の達成に必要な範囲内で提供する場合（この場合、当方は委託先に対して必要かつ適切な監督を行います）</li>
+          </ul>
+
+          <h2>4. 外部サービスの利用</h2>
+          <p>
+            本サービスでは、サービスの品質向上およびユーザー体験の改善のため、以下のような外部サービスを利用することがあります。これらのサービスの個人情報の取り扱いについては、各サービス提供者のプライバシーポリシーをご確認ください。
+          </p>
+          <ul>
+            <li>Google Analytics（アクセス解析）</li>
+            <li>Google Play Console / App Store Connect（アプリ配信および解析）</li>
+            <li>Netlify（ウェブサイトのホスティングおよびお問い合わせフォームの送信）</li>
+            <li>Firebase / その他のクラッシュレポート・解析ツール（アプリの不具合検知および利用状況の把握）</li>
+          </ul>
+          <p>
+            これらの外部サービスにおける情報の取得・利用を希望されない場合は、各サービスのオプトアウト設定や端末・ブラウザの設定によりご自身で制御いただけます。
+          </p>
+
+          <h2>5. Cookieの使用について</h2>
+          <p>
+            本サービスのウェブサイトでは、ユーザー体験の向上およびアクセス状況の分析のために、Cookieを使用することがあります。利用者はブラウザの設定によりCookieの受け入れを拒否することができますが、その場合、本サービスの一部機能が正常に動作しない可能性があります。
+          </p>
+
+          <h2>6. 個人情報の管理</h2>
+          <p>
+            当方は、取得した個人情報を正確かつ最新の状態に保ち、漏えい、滅失、毀損、不正アクセス等を防止するため、合理的な安全管理措置を講じます。
+          </p>
+
+          <h2>7. 個人情報の開示・訂正・削除</h2>
+          <p>
+            利用者は、当方が保有する自己の個人情報について、開示、訂正、追加、削除、利用停止等を請求することができます。請求にあたっては、以下のお問い合わせ先までご連絡ください。本人確認のうえ、法令に従い適切に対応いたします。
+          </p>
+
+          <h2>8. 子どものプライバシー</h2>
+          <p>
+            当方は、本サービスを利用される未成年者の方に対しても、適切に個人情報を取り扱うよう努めます。13歳未満の利用者から個人情報を意図的に収集することはありません。万一、収集していたことが判明した場合は速やかに削除いたします。
+          </p>
+
+          <h2>9. 本ポリシーの変更</h2>
+          <p>
+            当方は、法令の変更や本サービスの変更等に応じて、本ポリシーを改定することがあります。改定後の本ポリシーは、本ページに掲載した時点から効力を生じるものとします。
+          </p>
+
+          <h2>10. お問い合わせ窓口</h2>
+          <p>
+            本ポリシーに関するお問い合わせ、個人情報の取り扱いに関するご質問・ご請求等は、以下の窓口までご連絡ください。
+          </p>
+          <ul>
+            <li>事業者名：nano72（読み：ナノナツ）</li>
+            <li>代表者：宮平 将汰</li>
+            <li>所在地：〒150-0041 東京都渋谷区神南１丁目１１−４ ＦＰＧリンクス神南 5階</li>
+            <li>メール：<a href="mailto:contact@nano72.com">contact@nano72.com</a></li>
+            <li>お問い合わせフォーム：<a href="/contact">/contact</a></li>
+          </ul>
+
+          <p class="text-right text-sm">
+            制定日：{lastUpdated}
+          </p>
+        </div>
+
+        <footer class="mt-16 pt-8 border-t border-border">
+          <a
+            href="/"
+            class="inline-flex items-center text-accent hover:text-accent-hover transition-colors duration-300"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            トップに戻る
+          </a>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <Footer />
+</PortfolioLayout>

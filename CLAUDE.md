@@ -5,16 +5,19 @@
 
 ## サイト情報
 - **URL**: https://nano72.com (Netlify)
-- **会社名**: ナノナツ
+- **屋号**: nano72（読み: ナノナツ）
+- **代表者**: 宮平 将汰
+- **所在地**: 〒150-0041 東京都渋谷区神南１丁目１１−４ ＦＰＧリンクス神南 5階
 - **事業内容**: スマートフォン向けアプリケーションの企画・開発・運営
 - **開業日**: 2025年7月2日
+- **連絡先**: contact@nano72.com
 
 ## 技術スタック
 - **フレームワーク**: Astro v5.10.0
 - **言語**: TypeScript
 - **スタイリング**: CSS (CSS Variables使用)
 - **フォント**: M PLUS Rounded 1c, Noto Sans JP (Google Fonts)
-- **デプロイ**: GitHub Pages (GitHub Actions)
+- **デプロイ**: Netlify（mainブランチへのプッシュで自動デプロイ）
 
 ## ディレクトリ構造
 ```
@@ -28,9 +31,14 @@ src/
 │   └── BaseLayout.astro  # 基本レイアウト（OGP設定含む）
 ├── pages/
 │   ├── index.astro       # トップページ
-│   ├── about.astro       # 会社情報ページ
-│   ├── apps.astro        # アプリ一覧ページ
-│   └── contact.astro     # お問い合わせページ
+│   ├── about.astro       # ナノナツについて／事業者情報（#company）
+│   ├── contact.astro     # お問い合わせページ
+│   ├── privacy.astro     # プライバシーポリシー
+│   ├── terms.astro       # 利用規約
+│   ├── habit-tap.astro   # Habit Tap LP
+│   ├── evememo.astro     # Evememo LP
+│   ├── minimal.astro     # 別バージョンのトップ
+│   └── news/[...slug].astro  # お知らせ詳細ページ
 └── styles/
     └── global.css        # グローバルスタイル
 ```
@@ -85,9 +93,8 @@ npm run preview
 ```
 
 ## デプロイ
-- mainブランチへのプッシュで自動デプロイ
-- GitHub Actions (`.github/workflows/deploy.yml`)
-- GitHub Pages設定: Source = GitHub Actions
+- mainブランチへのプッシュで Netlify が自動デプロイ
+- お問い合わせフォームは Netlify Forms を使用
 
 ## 今後の拡張予定
 - サブドメインでの各アプリサイト
